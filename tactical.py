@@ -1,4 +1,4 @@
-from board import LFPlay
+from board import LFPlay, Board
 
 class TacticalPlay(LFPlay):
     def tacticalGreedy(self,V):
@@ -8,3 +8,9 @@ class TacticalPlay(LFPlay):
         return s1 - s2
     def antitacticalgreedy(self,V):
         return -1*tacticalGreedy(V)
+
+class Tester:
+    def testStrats(self,N):
+        g,ag,t,at = 0
+        for i in range(N):
+            b = Board(6,140,.4)
