@@ -5,8 +5,14 @@ import math
 import sys
 
 class Board:
-    """A class for representing the red-black chip game."""
+    """A class for representing the red-black chip game.
+
+    The board is an nxn grid.  Each grid cell has some number
+    of chips stacked on it.  Chips may be black (False) or 
+    red (True).
+    """
     def __init__(self,n,k,p):
+        """Initializes board object."""
         self.n = n
         self.k = k
         self.p = p
@@ -55,7 +61,6 @@ class Board:
 
     def choose(self,r,c):
         """Carries out action of removing chip at r,c."""
-        assert(self.color(r,c), "row,col off board in choose")
         self.pop(r-1,c)
         self.pop(r+1,c)
         self.pop(r,c)
@@ -73,15 +78,6 @@ class Board:
                 countRed += (1 if x < 0 else 0)
         return s if countRed == 0 else -1
 
-    def getPosFeatureVector(self,r,c):
-        """Returns feature vector for r,c."""
-        V = []
-        for dr in range(-1,2):
-            for dc in range(-1,2):
-                V.append(self.height(r+dr,c+dc))
-                V.append(-1 if self.color(r+dr,c+dc) else 1)
-        return V
-
     def getMoves(self):
         """Returns array of (r,c) positions of valid moves in lex order."""
         M = []
@@ -90,58 +86,91 @@ class Board:
                 if self.color(i,j):
                     M.append((i,j))
         return M
-        
-    def getMovesWithValues(self,f):
+
+class LFPlay:
+    """A class defining ChipBoard game play based on local features.
+
+    The feature vector concept used here is that a (r,c) position
+    defining a valid play is turned into an 18-component feature
+    vector where the nine-cell box centered on (r,c) is represented
+    from top-left to bottom-right.  Each cell gets two components in
+    the feature vector - the stack height and color (-1=red, +1=black).
+    The two moves to be compared are represented as a 36-component
+    vector that is first move followed by second.
+    """
+
+    def getPosFeatureVector(self,B,r,c):
+        """Returns feature vector for r,c."""
+        V = []
+        for dr in range(-1,2):
+            for dc in range(-1,2):
+                V.append(B.height(r+dr,c+dc))
+                V.append(-1 if B.color(r+dr,c+dc) else 1)
+        return V
+
+    def getMovesWithValues(self,B,f):
         """Returns array of ((r,c),val) for each valid move, where val is playout with f."""
-        M = self.getMoves()
-        return map(lambda m: (m,self.clone().choose(m[0],m[1]).playout(f)), M)
+        M = B.getMoves()
+        return map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)), M)
                     
-    def makeMove(self,f):
+    def makeMove(self,B,f):
         """Makes one move following choice function f as a policy."""
-        M = self.getMoves()
+        M = B.getMoves()
         best = M[0]
         for m in M:
             if m != best:
-                x = f(numpy.concatenate( (self.getPosFeatureVector(best[0],best[1]),self.getPosFeatureVector(m[0],m[1]))))
+                x = f(numpy.concatenate( (self.getPosFeatureVector(B,best[0],best[1]),
+                                          self.getPosFeatureVector(B,m[0],m[1]))))
                 if x > 0:
                     best = m
-        self.choose(best[0],best[1])
-        return self.score()
+        B.choose(best[0],best[1])
+        return B.score()
 
-    def playout(self,f):
+    def playout(self,B,f):
         """Playout with choice function f as a policy, returning resulting score."""
-        s = self.score()
+        s = B.score()
         while s < 0:
-            s = self.makeMove(f)
+            s = self.makeMove(B,f)
         return s
 
-    def play(self,f,N):
+    def play(B,f,N):
         """Plays N moves using f as policy."""
-        s,m = self.score(),N
+        s,m = B.score(),N
         while s < 0 and m > 0:
-            s = self.makeMove(f)
+            s = self.makeMove(B,f)
             m = m-1
         return s
     
-    
-def countRed(V,off):
-    """Returns number of TO BE CONTINUED  """
-    c = 0
-    for k in [1,3,4,5,7]:
-        c += (1 if V[2*(k+off)+1] < 0 else 0)
-    return c
+    def countRed(self,V,off):
+        """Returns number of red chips that will be removed by a move.
 
-def countRemoved(V,off):
-    c = 0
-    for k in [1,3,4,5,7]:
-        c += (1 if V[2*(k+off)] > 0 else 0)
-    return c
+        V : feature vector representing the two moves to be compared.
+        off: 0 to count first move, 9 to count second move
+        """
+        c = 0
+        for k in [1,3,4,5,7]:
+            c += (1 if V[2*(k+off)+1] < 0 else 0)
+        return c
 
-def greedy(V):
-    s1 = countRemoved(V,0) - countRed(V,0)
-    s2 = countRemoved(V,9) - countRed(V,9)
-    return s2 - s1 
+    def countRemoved(self,V,off):
+        """Returns total number of chips that will be removed by a move.
 
-def antigreedy(V):
-    return -1*greedy(V)
+        V : feature vector representing the two moves to be compared.
+        off: 0 to count first move, 9 to count second move
+        """
+        c = 0
+        for k in [1,3,4,5,7]:
+            c += (1 if V[2*(k+off)] > 0 else 0)
+        return c
+
+    def greedy(self,V):
+        """Greedy choice function."""
+        s1 = self.countRemoved(V,0) - self.countRed(V,0)
+        s2 = self.countRemoved(V,9) - self.countRed(V,9)
+        return s2 - s1 
+
+    def antigreedy(self,V):
+        """Anti-greedy choice function ... i.e. do the opposite!"""
+        return -1*self.greedy(V)
+
 
