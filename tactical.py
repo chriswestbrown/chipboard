@@ -28,8 +28,12 @@ class Tester:
 
         print "other wins: " + str(len(wins["other"]))
         print "greedy wins: " + str(len(wins["greedy"]))
-        wavg = sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
-        lavg = sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
+        wavg_rel = sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
+        lavg_rel = sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
 
-        print "When other wins, it is " + str(wavg) + " better than greedy on average"
-        print "When greedy wins, it is " + str(lavg) + " better than other on average"
+        wavg_abs = sum([res["greedy"][i]-res["other"][i] for i in wins["other"]])/len(wins["other"])
+        lavg_abs = sum([res["other"][i]-res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
+
+
+        print "When other wins, it is " + str(wavg_rel) + " times better on average, or " + str(wavg_abs) + " points lower on average"
+        print "When greedy wins, it is " + str(lavg_rel) + " times better on average, or " + str(lavg_abs) + " points lower on average"
