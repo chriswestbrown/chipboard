@@ -7,7 +7,7 @@ class TacticalPlay(LFPlay):
         s2 = self.countRemoved(V,9)/self.countRed(V,9)
         return s2 - s1
     def antitacticalgreedy(self,V):
-        return -1*self.tacticalGreedy(V)
+        return -1*self.tacticalgreedy(V)
 
 class Tester:
     def testStrat(self,N,strat):
@@ -18,7 +18,7 @@ class Tester:
         wins = {"greedy":[], "other":[]}
 
         for i in range(N):
-            b = Board(6,140,.4)
+            b = Board(12,140,.4)
             res["greedy"].append(t.playout(b.clone(),t.greedy))
             res["other"].append(t.playout(b.clone(),strat))
             if res["greedy"][i] < res["other"][i]:
