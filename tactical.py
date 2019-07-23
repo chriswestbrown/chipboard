@@ -18,7 +18,7 @@ class Tester:
         wins = {"greedy":[], "other":[]}
 
         for i in range(N):
-            b = Board(12,140,.4)
+            b = Board(6,140,.4)
             res["greedy"].append(t.playout(b.clone(),t.greedy))
             res["other"].append(t.playout(b.clone(),strat))
             if res["greedy"][i] < res["other"][i]:
