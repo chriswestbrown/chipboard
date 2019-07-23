@@ -11,18 +11,27 @@ class TacticalPlay(LFPlay):
         return -1*self.tacticalGreedy(V)
 
 class Tester:
-    def testStrats(self,N,strats):
+    def testStrat(self,N,strat):
+        # Tests different strategy vs the greedy strategy, and provides meaningful
+        #results
         t = TacticalPlay()
-        res = {s : [] for s in strats}
+        res = {"greedy": [], "other": []}
         for i in range(N):
             b = Board(6,140,.4)
-            for s in strats:
-                res[s].append(t.playout(b.clone(),s))
-        wins = {s : 0 for s in strats}
+            res["greedy"].append(t.playout(b.clone(),t.greedy))
+            res["other"].append(t.playout(b.clone(),strat))
+
+        wins = {"greedy":[], "other":[]}
         for i in range(N):
-            p = [ res[s][i] for s in strats]
-            m = min([res[s][i] for s in strats])
-            for s in strats:
-                if m == res[s][i]:
-                    wins[s] += 1
-        return wins
+            if res["greedy"][i] < res["other"][i]:
+                wins["greedy"].append(i)
+            else:
+                wins["other"].append(i)
+
+        print "other wins " + str(len(wins["other"]))
+        print "greedy wins " + str(len(wins["greedy"]))
+        wavg = sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
+        lavg = sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
+
+        print "When other wins, it is " + str(wavg) + " better than greedy on average"
+        print "When greedy wins, it is " + str(lavg) + " better than other on average"
