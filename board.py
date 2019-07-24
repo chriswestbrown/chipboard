@@ -221,6 +221,13 @@ class LFPlay:
         s2 = self.countRemoved(V,9) - self.countRed(V,9)
         return s2 - s1
 
+    def adaptFeatures(self,V):
+        featArr = []; #[num red chips by move 1, num total chips by move 1, num red chips by move 2, num total chips by move 2]
+        featArr = [self.countRed(V,0), self.countRemoved(V,0), self.countRed(V,9), self.countRemoved(V,9)]
+        return featArr
+
+
+
     def antigreedy(self,V):
         """Anti-greedy choice function ... i.e. do the opposite!"""
         return -1*self.greedy(V)
