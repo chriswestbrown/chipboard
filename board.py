@@ -50,7 +50,7 @@ class Board:
 
     def getProb(self):
         n = self.n*1.0
-        self.p = -(3*n**2+3*n-540*self.p +2)/(12*n**2-3*n-2)
+        return -(3.0*n**2.0+3.0*n-540.0*self.p +2)/(12.0*n**2.0-3.0*n-2.0)
 
     def checkProb(self):
         return self.p
