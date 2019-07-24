@@ -18,56 +18,64 @@ class Board:
         self.p = p
         self.B = map(lambda y: map(lambda x: [],range(0,n)),range(0,n))
         self.A = numpy.zeros((n,n))
-        not_important_bottoms = []
+        self.numred = 0
         if kind == 0:
-            for i in range(0,k):
-                r = random.randint(0,n-1)
-                c = random.randint(0,n-1)
-                cr = random.random() < p
-                self.B[r][c].append(cr)
-                self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
-        elif kind == 1:
-            count = k
-            while count > 0:
-                r = random.randint(0,n-1)
-                c = random.randint(0,n-1)
-                self.B[r][c].append(True)
-                self.A[r,c] = (math.fabs(self.A[r,c]) + 1)*-1
-                count -= 1
-                for x,y in [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
-                    if self.valid(x,y):
-                        if self.height(x,y) == 0:
-                            not_important_bottoms.append((x,y))
-                        self.B[x][y].append(False)
-                        self.A[x,y] = (math.fabs(self.A[x,y]) + 1)
-                        count -= 1
+            self.init_0()
+        else:
+            self.init_winnable(kind)
 
-            removed = random.sample(not_important_bottoms,count*-1)
-            for (x,y) in removed:
-                self.B[x][y].pop(0)
-                self.A[x,y] = (math.fabs(self.A[x,y]) - 1)
+    def init_0(self):
+        for i in range(0,self.k):
+            r = random.randint(0,self.n-1)
+            c = random.randint(0,self.n-1)
+            cr = random.random() < self.p
+            self.B[r][c].append(cr)
+            self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
+            if cr:
+                self.numred += 1
 
-        elif kind == 2:
-            count = k
-            while count > 0:
-                r = random.randint(0,n-1)
-                c = random.randint(0,n-1)
-                self.B[r][c].append(True)
-                self.A[r,c] = (math.fabs(self.A[r,c]) + 1)*-1
-                count -= 1
-                for x,y in [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
-                    if self.valid(x,y):
-                        if self.height(x,y) == 0:
-                            not_important_bottoms.append((x,y))
-                        cr = random.random() < p
-                        self.B[x][y].append(cr)
-                        self.A[x,y] = (math.fabs(self.A[x,y]) + 1) * (-1.0 if cr else 1.0)
-                        count -= 1
+    def init_winnable(self,kind=1):
+        self.p = (0 if kind == 1 else self.getProb())
+        self.not_important_bottoms = []
+        count = self.k
+        while count > 0:
+            r = random.randint(0,self.n-1)
+            c = random.randint(0,self.n-1)
+            count -= self.add(r,c)
 
-            removed = random.sample(not_important_bottoms,count*-1)
-            for (x,y) in removed:
-                self.B[x][y].pop(0)
-                self.A[x,y] + (1.0 if self.A[x,y] < 0 else -1.0)
+        removed = random.sample(self.not_important_bottoms,count*-1)
+        for (x,y) in removed:
+            self.B[x][y].pop(0)
+            self.A[x,y] += (1.0 if self.A[x,y] < 0 else -1.0)
+
+    def getProb(self):
+        n = self.n*1.0
+        val = 2*(4.0/n**2)+3*((4.0*(n-2))/n**2)+4*((n-2)**2/n**2)
+        return self.p-1/(val+1.0)
+
+    def checkProb(self):
+        return self.p
+
+    def add(self,r,c):
+        count = 0
+        self.B[r][c].append(True)
+        self.A[r,c] = (math.fabs(self.A[r,c]) + 1)*-1
+        self.numred += 1
+        count += 1
+        for x,y in [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
+            if self.valid(x,y):
+                if self.height(x,y) == 0:
+                    self.not_important_bottoms.append((x,y))
+                cr = random.random() < self.p
+                self.B[x][y].append(cr)
+                self.A[x,y] = (math.fabs(self.A[x,y]) + 1) * (-1.0 if cr else 1.0)
+                count += 1
+                if cr:
+                    self.numred += 1
+        return count
+
+    def getNumred(self):
+        return self.numred
 
     def clone(self):
         """Creates a deep copy of the Board object."""
