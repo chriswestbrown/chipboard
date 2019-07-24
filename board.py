@@ -8,22 +8,66 @@ class Board:
     """A class for representing the red-black chip game.
 
     The board is an nxn grid.  Each grid cell has some number
-    of chips stacked on it.  Chips may be black (False) or 
+    of chips stacked on it.  Chips may be black (False) or
     red (True).
     """
-    def __init__(self,n,k,p):
+    def __init__(self,n,k,p,kind=0):
         """Initializes board object."""
         self.n = n
         self.k = k
         self.p = p
         self.B = map(lambda y: map(lambda x: [],range(0,n)),range(0,n))
         self.A = numpy.zeros((n,n))
-        for i in range(0,k):
-            r = random.randint(0,n-1)
-            c = random.randint(0,n-1)
-            cr = random.random() < p
-            self.B[r][c].append(cr)
-            self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
+        not_important_bottoms = []
+        if kind == 0:
+            for i in range(0,k):
+                r = random.randint(0,n-1)
+                c = random.randint(0,n-1)
+                cr = random.random() < p
+                self.B[r][c].append(cr)
+                self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
+        elif kind == 1:
+            count = k
+            while count > 0:
+                r = random.randint(0,n-1)
+                c = random.randint(0,n-1)
+                self.B[r][c].append(True)
+                self.A[r,c] = (math.fabs(self.A[r,c]) + 1)*-1
+                count -= 1
+                for x,y in [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
+                    if self.valid(x,y):
+                        if self.height(x,y) == 0:
+                            not_important_bottoms.append((x,y))
+                        self.B[x][y].append(False)
+                        self.A[x,y] = (math.fabs(self.A[x,y]) + 1)
+                        count -= 1
+
+            removed = random.sample(not_important_bottoms,count*-1)
+            for (x,y) in removed:
+                self.B[x][y].pop(0)
+                self.A[x,y] = (math.fabs(self.A[x,y]) - 1)
+
+        elif kind == 2:
+            count = k
+            while count > 0:
+                r = random.randint(0,n-1)
+                c = random.randint(0,n-1)
+                self.B[r][c].append(True)
+                self.A[r,c] = (math.fabs(self.A[r,c]) + 1)*-1
+                count -= 1
+                for x,y in [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
+                    if self.valid(x,y):
+                        if self.height(x,y) == 0:
+                            not_important_bottoms.append((x,y))
+                        cr = random.random() < p
+                        self.B[x][y].append(cr)
+                        self.A[x,y] = (math.fabs(self.A[x,y]) + 1) * (-1.0 if cr else 1.0)
+                        count -= 1
+
+            removed = random.sample(not_important_bottoms,count*-1)
+            for (x,y) in removed:
+                self.B[x][y].pop(0)
+                self.A[x,y] + (1.0 if self.A[x,y] < 0 else -1.0)
 
     def clone(self):
         """Creates a deep copy of the Board object."""
@@ -31,10 +75,10 @@ class Board:
         C.n = self.n
         C.k = self.k
         C.p = self.p
-        C.B = map( lambda X: map(lambda a: a[:], X), self.B ) 
+        C.B = map( lambda X: map(lambda a: a[:], X), self.B )
         C.A = self.A.copy()
         return C
-            
+
     def getBoard(self):
         """Returns the board represented as a numpy array. """
         return self.A
@@ -73,7 +117,7 @@ class Board:
         s = 0
         countRed = 0
         for r in self.A:
-            for x in r: 
+            for x in r:
                 s += math.fabs(x)
                 countRed += (1 if x < 0 else 0)
         return s if countRed == 0 else -1
@@ -86,6 +130,7 @@ class Board:
                 if self.color(i,j):
                     M.append((i,j))
         return M
+
 
 class LFPlay:
     """A class defining ChipBoard game play based on local features.
@@ -112,7 +157,7 @@ class LFPlay:
         """Returns array of ((r,c),val) for each valid move, where val is playout with f."""
         M = B.getMoves()
         return map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)), M)
-                    
+
     def makeMove(self,B,f):
         """Makes one move following choice function f as a policy."""
         M = B.getMoves()
@@ -140,7 +185,7 @@ class LFPlay:
             s = self.makeMove(B,f)
             m = m-1
         return s
-    
+
     def countRed(self,V,off):
         """Returns number of red chips that will be removed by a move.
 
@@ -167,10 +212,8 @@ class LFPlay:
         """Greedy choice function."""
         s1 = self.countRemoved(V,0) - self.countRed(V,0)
         s2 = self.countRemoved(V,9) - self.countRed(V,9)
-        return s2 - s1 
+        return s2 - s1
 
     def antigreedy(self,V):
         """Anti-greedy choice function ... i.e. do the opposite!"""
         return -1*self.greedy(V)
-
-

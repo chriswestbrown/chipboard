@@ -10,7 +10,7 @@ class TacticalPlay(LFPlay):
         return -1*self.tacticalgreedy(V)
 
 class Tester:
-    def testStrat(self,N,strat):
+    def testStrat(self,N,strat,kind=0):
         # Tests different strategy vs the greedy strategy, and provides meaningful
         #results
         t = TacticalPlay()
@@ -18,7 +18,7 @@ class Tester:
         wins = {"greedy":[], "other":[]}
 
         for i in range(N):
-            b = Board(6,140,.4)
+            b = Board(6,140,.4,kind)
             res["greedy"].append(t.playout(b.clone(),t.greedy))
             res["other"].append(t.playout(b.clone(),strat))
             if res["greedy"][i] < res["other"][i]:
