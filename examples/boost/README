@@ -1,0 +1,14 @@
+* when installing boost, edit bootstrap.sh to set PYTHON to python3,
+  if that's not already your default python version.
+  - ./bootstrap.sh
+  - ./b2
+  
+
+* To compile ... just type make!
+
+* To run in python:
+  1. make sure LD_LIBRARY_PATH includes boost and our adder.so
+     /home/wcbrown/research/maui2019/chipboard/examples/boost
+     /home/wcbrown/research/maui2019/chipboard/boost_1_70_0/stage/lib
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/wcbrown/research/maui2019/chipboard/examples/boost:/home/wcbrown/research/maui2019/chipboard/boost_1_70_0/stage/lib
