@@ -39,4 +39,4 @@ class Tester:
 
 
         print("When other wins, it is " + str(wavg_rel) + " times better on average, or " + str(wavg_abs) + " points lower on average")
-        print()"When greedy wins, it is " + str(lavg_rel) + " times better on average, or " + str(lavg_abs) + " points lower on average")
+        print("When greedy wins, it is " + str(lavg_rel) + " times better on average, or " + str(lavg_abs) + " points lower on average")
