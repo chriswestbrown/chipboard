@@ -1,0 +1,16 @@
+Hokulea:
+
+* you need to load "modules"
+
+  module load pbs tensorflow/1.8.0 spectrum-mpi cuda/9.2
+
+* to install keras on your account:
+
+  pip install --user keras
+
+* using mpi4py
+  https://centers.hpc.mil/users/advancedTopics/Executing_many_serial_or_small_jobs_at_once.html
+
+* Pbs - this is how you actually get jobs running on Hokulea
+
+  https://www.mhpcc.hpc.mil/doc/hokuleaPbsGuide.html
