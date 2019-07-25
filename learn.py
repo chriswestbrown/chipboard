@@ -72,7 +72,7 @@ class Learner:
             self.lr *= lr_delta
             self.opt = keras.optimizers.SGD(lr=self.lr)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
-            print "Just completed the "+str(n)+"round"
+            print("Just completed the "+str(n)+"round")
             self.testKnowledge(1000,kind)
 
     def testKnowledge(self,n,kind):

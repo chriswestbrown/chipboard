@@ -28,9 +28,9 @@ class Tester:
             else:
                 wins["ties"].append(i)
 
-        print "other wins: " + str(len(wins["other"]))
-        print "greedy wins: " + str(len(wins["greedy"]))
-        print "ties: " + str(len(wins["ties"]))
+        print("other wins: " + str(len(wins["other"])))
+        print("greedy wins: " + str(len(wins["greedy"])))
+        print("ties: " + str(len(wins["ties"])))
         wavg_rel = 0#sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
         lavg_rel = 0#sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
 
@@ -38,5 +38,5 @@ class Tester:
         lavg_abs = sum([res["other"][i]-res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
 
 
-        print "When other wins, it is " + str(wavg_rel) + " times better on average, or " + str(wavg_abs) + " points lower on average"
-        print "When greedy wins, it is " + str(lavg_rel) + " times better on average, or " + str(lavg_abs) + " points lower on average"
+        print("When other wins, it is " + str(wavg_rel) + " times better on average, or " + str(wavg_abs) + " points lower on average")
+        print()"When greedy wins, it is " + str(lavg_rel) + " times better on average, or " + str(lavg_abs) + " points lower on average")
