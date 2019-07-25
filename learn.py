@@ -67,6 +67,7 @@ class Learner:
         size: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
         for i in range(n):
+            print("Starting round " + str(i))
             x,y = self.generateData(size,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)),rand_init,rand_range)
             self.model.fit(x,y,epochs=ep)
             self.lr *= lr_delta
