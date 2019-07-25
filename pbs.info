@@ -1,0 +1,58 @@
+Directives are special forms of comments beginning with "#PBS"
+
+All PBS directives MUST come before the first line of executable code in your script
+
+Specify shell
+  #!/bin/shell
+
+
+ex: #PBS -l select=N1:ncpus=160:mpiprocs=N2
+  N1 = number of nodes requesting
+  N2 = number of processes per node
+  160 = total number of cores on the node
+
+
+REQUIRED IN ALL BASH SCRIPT BC ONLY ONE JOB PER NODE
+  #PBS -l place=scatter:excl
+
+Estimate on how long it will take (@ designated time, job terminates)
+  #PBS -l walltime=HHH:MM:SS
+
+
+Designated queue name  == use command show_queues to see available queues (background doesn't work against project allocated)
+  #PBS -q queue_name
+
+Specify project ID -- use show_usage to see your projects
+ #PBS -A Project_ID
+
+Execution Block:
+  Environment Setup - set environment variables, load modules, create directories, copying files, initializing data, etc.
+  As the last step in this stage, you will generally cd to the directory that you want your script to execute in. Most users use "cd $PBS_O_WORKDIR" to run the batch script from the directory where they typed "qsub" to submit the job.
+Compilation:
+  You may need to compile your application if you don't already have a pre-compiled executable available.
+Launching:
+  Your application is launched using the aprun command for CRAY MPICH2 codes and ccmrun for any serial, shared-memory, or non-native MPI codes.
+Clean up:
+ This usually includes archiving your results and removing temporary files and directories.
+
+Submit job: directives suppleied on command line override directives in script
+  qsub NAME_OF_SCRIPT_FILE
+  qsub -l walltime=HHH:MM:SS NAME_OF_SCRIPT_FILE (example with directive in command line)
+
+Optional:
+  #PBS -j	oe	MergeS stderr and stdout into stdout.
+
+BASIC COMMANDS:
+
+  qsub  	Submit a job.
+  qstat	  Check the status of a job.
+  qview 	A more user-friendly version of qstat.
+  qstat   -q	Display the status of all PBS queues.
+  show_queues	A more user-friendly version of "qstat -q".
+  qdel  	Delete a job.
+  qhold	  Place a job on hold.
+  qrls	  Release a job from hold.
+  tracejob	Display job accounting data from a completed job.
+  pbsnodes	Display host status of all PBS batch nodes.
+  apstat	  Display attributes of and resources allocated to running jobs.
+  qpeek	    Lets you peek at the stdout and stderr of your running job.
