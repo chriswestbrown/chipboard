@@ -31,7 +31,7 @@ class Learner:
         val = 1.01*features[0]-0.51*features[1]-.99*features[2]+.48*features[3]-.003
         return val
 
-    def generateData(self,n,kind,X,Y):
+    def generateData(self,n,kind,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
         all possible moves and their resulting values and adds them to provided arrays
         n: Number of boards to consider
@@ -42,7 +42,7 @@ class Learner:
         count = 0
         for a in range(n):
             b = Board(6,140,.4,kind)
-            steps = 10 +random.randint(0,7)
+            steps = rand_init +random.randint(0,rand_range)
             self.player.play(b,self.playFunc,steps)
             L = self.player.getMovesWithValues(b,self.playFunc)
             for i in range(len(L)):
@@ -57,7 +57,7 @@ class Learner:
                         count += 1
         return (X[:count],Y[:count])
 
-    def learnThings(self,n=10,ep=10,lr_delta=.8,size=400,kind=2):
+    def learnThings(self,n=10,ep=10,lr_delta=.8,size=400,kind=2,rand_init=10,rand_range=7):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
@@ -67,7 +67,7 @@ class Learner:
         size: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
         for i in range(n):
-            x,y = self.generateData(size,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)))
+            x,y = self.generateData(size,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)),rand_init,rand_range)
             self.model.fit(x,y,epochs=ep)
             self.lr *= lr_delta
             self.opt = keras.optimizers.SGD(lr=self.lr)
