@@ -19,10 +19,10 @@ Estimate on how long it will take (@ designated time, job terminates)
   #PBS -l walltime=HHH:MM:SS
 
 
-Designated queue name  == use command show_queues to see available queues (background doesn't work against project allocated)
+Designated queue name  == use command show_queues to see available queues (background doesn't work against allocated project hours)
   #PBS -q queue_name
 
-Specify project ID -- use show_usage to see your projects
+Specify project ID -- use command show_usage to see your projects
  #PBS -A Project_ID
 
 Execution Block:
@@ -39,8 +39,10 @@ Submit job: directives suppleied on command line override directives in script
   qsub NAME_OF_SCRIPT_FILE
   qsub -l walltime=HHH:MM:SS NAME_OF_SCRIPT_FILE (example with directive in command line)
 
-Optional:
+Optional Directives:
   #PBS -j	oe	MergeS stderr and stdout into stdout.
+  #PBS -N NAME_OF_JOB
+
 
 BASIC COMMANDS:
 
