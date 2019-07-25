@@ -15,7 +15,7 @@ class Tester:
         #results
         t = TacticalPlay()
         res = {"greedy": [], "other": []}
-        wins = {"greedy":[], "other":[]}
+        wins = {"greedy":[], "other":[], "ties":[]}
 
         for i in range(N):
             b = Board(6,140,.4,kind)
@@ -23,11 +23,14 @@ class Tester:
             res["other"].append(t.playout(b.clone(),strat))
             if res["greedy"][i] < res["other"][i]:
                 wins["greedy"].append(i)
-            else:
+            elif res["greedy"][i] > res["other"][i]:
                 wins["other"].append(i)
+            else:
+                wins["ties"].append(i)
 
         print "other wins: " + str(len(wins["other"]))
         print "greedy wins: " + str(len(wins["greedy"]))
+        print "ties: " + str(len(wins["ties"]))
         wavg_rel = 0#sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
         lavg_rel = 0#sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
 

@@ -34,6 +34,11 @@ class Learner:
         res =  self.model.predict(numpy.array([features]))
         return res[0][0]
 
+    def learnedEquation(self,V):
+        features = self.player.adaptFeatures(V)
+        val = 1.01*features[0]-0.51*features[1]-.99*features[2]+.48*features[3]-.003
+        return val
+
     def generateData(self,n,kind,X,Y):
         count = 0
         for a in range(n):
@@ -60,6 +65,8 @@ class Learner:
             self.lr *= lr_delta
             self.opt = keras.optimizers.SGD(lr=self.lr)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
+            print "Just completed the "+str(n)+"round"
+            self.testKnowledge(1000,kind)
 
     def testKnowledge(self,n,kind):
         t = Tester()
