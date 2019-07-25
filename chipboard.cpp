@@ -14,7 +14,7 @@ public:
   int putChoiceChip(int r, int c);
   int putSurroundingChips(int r, int c);
   double getProb(double n, double p);
-  int putChip(int r, int c, bool color, bool choiceTile);
+  int putChip(int r, int c, bool color, bool choiceChip);
   void removeExtraBottomLayer(int numChipsToRemove);
   bool in(int r, int c, int N);
   bool color(int r, int c);
@@ -33,12 +33,13 @@ private:
   int boardType;
 };
 
-
+/** int n for size,int k for num chips, double p for probability, int bt for board type
+*/
 Board::Board(int n, int k, double p, int bt)
 {
   this->p = p;
   this->n = n;
-  this->boardType=bt;
+  this->boardType = bt;
   B.resize(n);
   for(auto itr = B.begin(); itr != B.end(); ++itr)
   {
@@ -55,7 +56,7 @@ Board::Board(int n, int k, double p, int bt)
   //fflush(stdout);
 
 
-  int numToRemove = i-k;
+  int numToRemove = i-k; //number of chips to remove from the bottom
   removeExtraBottomLayer(numToRemove);
 }
 
@@ -86,13 +87,13 @@ int Board::putChoiceChip(int r, int c) {
         return -(3.0*pow(n,2.0)+3.0*n-540.0*p +2)/(12.0*pow(n,2.0)-3.0*n-2.0);
 }
 
-
-  int Board::putChip(int r, int c, bool color, bool choiceTile) {
+  /**put chip at r,c with color and whether or not it is a choice-chip*/
+  int Board::putChip(int r, int c, bool color, bool choiceChip) {
     int num = 0;
     if(in(r,c,this->n)==true) { //make sure location is ON the board
       B[r][c].push_back(color);
       num = 1;
-      if(height(r,c) == 1 && choiceTile==false) {
+      if(height(r,c) == 1 && choiceChip==false) {
       //  std::cout<<"adding ("<< r<<","<<c<<") to bottom dwelling chips\n";
         this->bottomRVals.push_back(r); //keeping track of the chips on the bottom that we can remove at the end
         this->bottomCVals.push_back(c);
@@ -254,9 +255,9 @@ int main(int argc, char** argv) {
 
   srand(argc > 1 ? atoi(argv[1]) : time(0));
   int sum = 0;
-  Board A(6, 140, 0.4,0);
-  Board B(6,140,0.4,1);
-  Board C(6,140,0.4,2);
+  Board A(6, 140, 0.4,0); // 0  for typoe 0
+  Board B(6,140,0.4,1); //1 for type 1
+  Board C(6,140,0.4,2); //2 type 2
   A.print();
   std::cout<<"\n";
   greedyplay(A);
