@@ -185,7 +185,7 @@ class LFPlay:
             s = self.makeMove(B,f)
         return s
 
-    def play(B,f,N):
+    def play(self,B,f,N):
         """Plays N moves using f as policy."""
         s,m = B.score(),N
         while s < 0 and m > 0:
@@ -225,8 +225,6 @@ class LFPlay:
         featArr = []; #[num red chips by move 1, num total chips by move 1, num red chips by move 2, num total chips by move 2]
         featArr = [self.countRed(V,0), self.countRemoved(V,0), self.countRed(V,9), self.countRemoved(V,9)]
         return featArr
-
-
 
     def antigreedy(self,V):
         """Anti-greedy choice function ... i.e. do the opposite!"""

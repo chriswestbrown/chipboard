@@ -28,8 +28,8 @@ class Tester:
 
         print "other wins: " + str(len(wins["other"]))
         print "greedy wins: " + str(len(wins["greedy"]))
-        wavg_rel = sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
-        lavg_rel = sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
+        wavg_rel = 0#sum([res["greedy"][i]/res["other"][i] for i in wins["other"]])/len(wins["other"])
+        lavg_rel = 0#sum([res["other"][i]/res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
 
         wavg_abs = sum([res["greedy"][i]-res["other"][i] for i in wins["other"]])/len(wins["other"])
         lavg_abs = sum([res["other"][i]-res["greedy"][i] for i in wins["greedy"]])/len(wins["greedy"])
