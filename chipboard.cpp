@@ -1,11 +1,22 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <chrono>
+#include <cmath>
+#include <vector>
+
+
 
 class Board
 {
 public:
-  Board(int n, int k, double p);
+  Board(int n, int k, double p, int bt);
+  int putChoiceChip(int r, int c);
+  int putSurroundingChips(int r, int c);
+  double getProb(double n, double p);
+  int putChip(int r, int c, bool color, bool choiceTile);
+  void removeExtraBottomLayer(int numChipsToRemove);
+  bool in(int r, int c, int N);
   bool color(int r, int c);
   int height(int r, int c);
   void choose(int r, int c);
@@ -17,27 +28,116 @@ private:
   std::vector< std::vector< std::vector<int> > > B;
   double p;
   int n;
+  std::vector<int> bottomRVals;
+  std::vector<int> bottomCVals;
+  int boardType;
 };
 
 
-Board::Board(int n, int k, double p)
+Board::Board(int n, int k, double p, int bt)
 {
   this->p = p;
   this->n = n;
+  this->boardType=bt;
   B.resize(n);
   for(auto itr = B.begin(); itr != B.end(); ++itr)
   {
     (*itr).resize(n);
   }
 
-  for(int i = 0; i < k; ++i)
-  {
+  int i=0;
+  while(i<k) {
     int r = rand() % n, c = rand() % n;
-    bool cr = rand()/double(RAND_MAX) < p;
+    k=k-putChoiceChip(r,c);
+
+  }
+  //std::cout<<"integer k winds up being" <<k <<"\n";
+  //fflush(stdout);
+
+
+  int numToRemove = i-k;
+  removeExtraBottomLayer(numToRemove);
+}
+
+
+/**If board is type 0, this will always return 1 (bc only one chip is always placed)
+  if type 1 or 2, this will return up to 5, depending on how many surrounding chips were placed.
+  */
+int Board::putChoiceChip(int r, int c) {
+  if(this->boardType==0) {
+    bool cr = rand()/double(RAND_MAX) < this->p;
     B[r][c].push_back(cr);
+    return 1;
+  }  else {
+    int count=1;
+  //  std::cout<<"Placing choice chip at " <<r<<","<<c<<"\n";
+    fflush(stdout);
+    putChip(r,c,true, true);
+    count+=putSurroundingChips(r,c);
+    return count;
+    //height++ if red, height-- if black
+
+
   }
 }
 
+//use expected value to find probability to make sure 40% of chips are red
+  double Board::getProb(double n, double p) {
+        return -(3.0*pow(n,2.0)+3.0*n-540.0*p +2)/(12.0*pow(n,2.0)-3.0*n-2.0);
+}
+
+
+  int Board::putChip(int r, int c, bool color, bool choiceTile) {
+    int num = 0;
+    if(in(r,c,this->n)==true) { //make sure location is ON the board
+      B[r][c].push_back(color);
+      num = 1;
+      if(height(r,c) == 1 && choiceTile==false) {
+      //  std::cout<<"adding ("<< r<<","<<c<<") to bottom dwelling chips\n";
+        this->bottomRVals.push_back(r); //keeping track of the chips on the bottom that we can remove at the end
+        this->bottomCVals.push_back(c);
+      }
+      return num;
+    }
+  }
+
+  int Board::putSurroundingChips(int r,int c) {
+    int count=0;
+    if (this->boardType==1) {
+      count+=putChip(r-1,c,false, false); //placing chip at r-1, c,  false bc guarenteed black (type1 board, false bc it is NOT a choice tile)
+      count+=putChip(r+1,c,false, false);
+      count+=putChip(r,c-1,false, false);
+      count+=putChip(r,c+1,false, false);
+      return count;
+    } else if (this->boardType==2) {
+      count+=putChip(r-1,c,(rand()/double(RAND_MAX) < getProb(this->n,this->p)), false);
+      count+=putChip(r+1,c,(rand()/double(RAND_MAX) < getProb(this->n,this->p)), false);
+      count+=putChip(r,c-1,(rand()/double(RAND_MAX) < getProb(this->n,this->p)), false);
+      count+=putChip(r,c+1,(rand()/double(RAND_MAX) < getProb(this->n,this->p)), false);
+      return count;
+    }
+  }
+
+void Board::removeExtraBottomLayer(int numChipsToRemove) {
+  int i = 0;
+  while(i<numChipsToRemove) {
+    int rangeSize = bottomRVals.size();
+    int index = rand()%rangeSize;
+    int x = bottomRVals.at(index);
+    int y = bottomCVals.at(index);
+    //std::cout<<"x and y to be popped are " << x << "," << y <<"\n";
+    B[x][y].erase(B[x][y].begin());
+    std::swap(bottomRVals[index], bottomRVals[0]);
+    std::swap(bottomCVals[index], bottomCVals[0]);
+    bottomRVals.pop_back();
+    bottomCVals.pop_back();
+    i++;
+  }
+
+}
+
+
+bool Board::in(int r, int c, int N) { return 0 <= r && r < N && 0 <= c && c < N; }
 bool Board::color(int r, int c) { return B[r][c].size() == 0 ? 0 : B[r][c].back(); }
 int Board::height(int r, int c) { return B[r][c].size(); }
 void Board::pop(int r, int c)
@@ -63,16 +163,19 @@ int Board::score()
 }
 void Board::print()
 {
+  int sum =0;
   for(int i = 0; i < n; ++i)
   {
     for(int j = 0; j < n; ++j)
     {
       std::cout << ' ';
+      sum += height(i,j);
       if (height(i,j) == 0) std::cout << " "; else std::cout << height(i,j);
       std::cout << (color(i,j) ? '*' : ' ');
     }
     std::cout << std::endl;
   }
+std::cout<<"Sum of all chips on board: " << sum <<"\n";
 }
 
 int randplay(Board B) // note: copy!
@@ -91,10 +194,10 @@ int randplay(Board B) // note: copy!
   }
   return s;
 }
+bool in(int r, int c, int N) { return 0 <= r && r < N && 0 <= c && c < N; };
 
 int dr[] = {0,0,-1,0,+1};
 int dc[] = {0,-1,0,+1,0};
-bool in(int r, int c, int N) { return 0 <= r && r < N && 0 <= c && c < N; }
 int h(Board &B, int r, int c)
 {
   int killc = 0, losec = 0;
@@ -125,7 +228,7 @@ int greedyplay(Board B) // note: copy!
       int i = V[k]/N, j = V[k] % N;
       int sc = h(B,i,j);
       if (bests < sc) { bests = sc; bestk = k; }
-    }      
+    }
     B.choose(V[bestk]/N,V[bestk] % N);
   }
   B.print();
@@ -146,16 +249,48 @@ void humanplay(Board B)
   std::cout << "score = " << s << std::endl;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
+
+
   srand(argc > 1 ? atoi(argv[1]) : time(0));
-  Board B(6,140,0.4); //-- this seems big enough to make things interesting!
-  B.print();
-  std::cout << std::endl << "random scores: ";
-  for(int i = 0; i < 20; ++i)
-    std::cout << randplay(B) << ' ';
-  std::cout << std::endl << "************" << std::endl;
-  std::cout << greedyplay(B) << std::endl << std::endl;
-  humanplay(B);
-  return 0;
+  int sum = 0;
+  Board A(6, 140, 0.4,0);
+  Board B(6,140,0.4,1);
+  Board C(6,140,0.4,2);
+  A.print();
+  std::cout<<"\n";
+  greedyplay(A);
+  std::cout<<"\n*********\n";
+  B.print();//-- this seems big enough to make things interesting!
+  std::cout<<"\n";
+  greedyplay(B);
+  std::cout<<"\n*********\n";
+  C.print();
+  std::cout<<"\n";
+  greedyplay(C);
+
+
 }
+/**
+// Record start time
+auto start = std::chrono::high_resolution_clock::now();
+
+for (int i=0;i<100;i++) {
+  srand(argc > 1 ? atoi(argv[1]) : time(0)+i);
+  Board B(6,140,0.4); //-- this seems big enough to make things interesting!
+  //B.print();
+  //std::cout << std::endl << "random scores: ";
+  for(int j = 0; j < 500; j++) {
+    //std::cout << randplay(B) << ' ';
+    //std::cout << std::endl << "************" << std::endl;
+    greedyplay(B);
+    //humanplay(B);
+  }
+}
+auto finish = std::chrono::high_resolution_clock::now();
+std::chrono::duration<double> elapsed = finish - start;
+double dbl = elapsed.count();
+
+std::cout <<"100 different boards, run 500 times for each board, takes " << dbl << " seconds.";
+return 0;
+*/
