@@ -1,4 +1,4 @@
-!/usr/bin/env python
+#!/usr/bin/env python
 #Parallel HelloWorld
 
 from mpi4py import MPI
