@@ -16,7 +16,7 @@ class Board:
         self.n = n
         self.k = k
         self.p = p
-        self.B = map(lambda y: map(lambda x: [],range(0,n)),range(0,n))
+        self.B = list(map(lambda y: list(map(lambda x: [],range(0,n))),range(0,n)))
         self.A = numpy.zeros((n,n))
         self.numred = 0
         if kind == 0:
@@ -82,7 +82,7 @@ class Board:
         C.n = self.n
         C.k = self.k
         C.p = self.p
-        C.B = map( lambda X: map(lambda a: a[:], X), self.B )
+        C.B = list(map( lambda X: list(map(lambda a: a[:], X)), self.B ))
         C.A = self.A.copy()
         return C
 
@@ -163,7 +163,7 @@ class LFPlay:
     def getMovesWithValues(self,B,f):
         """Returns array of ((r,c),val) for each valid move, where val is playout with f."""
         M = B.getMoves()
-        return map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)), M)
+        return list(map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)), M))
 
     def makeMove(self,B,f):
         """Makes one move following choice function f as a policy."""
