@@ -305,7 +305,7 @@ int modelPlay(Board B, double w1, double w2, double w3, double w4, double w5) //
   return s;
 }
 
-int modelPlaySteps(Board &B, double w1, double w2, double w3, double w4, double w5, int steps ) // note: copy!
+Board modelPlaySteps(Board B, double w1, double w2, double w3, double w4, double w5, int steps ) // note: copy!
 {
   int N = B.dim(), s = 0;
   while((s = B.score()) < 0 && steps>0)
@@ -328,25 +328,26 @@ int modelPlaySteps(Board &B, double w1, double w2, double w3, double w4, double 
     B.choose(V[bestk]/N,V[bestk] % N);
     steps--;
   }
-  B.print();
-  return s;
+  // B.print();
+  return B;
+}
+
+std::pair<int,int> play(Board B,int i, int j, double w1, double w2, double w3, double w4, double w5){
+  B.choose(i,j);
+  int score=modelPlay(B, w1,w2,w3,w4,w5);
+  return std::pair<int,int>(i*B.dim()+j, score);
 }
 
 std::vector<std::pair<int,int>> getMovesWithValues(Board B, double w1, double w2, double w3, double w4, double w5) // note: copy!
 {
   std::vector<std::pair<int,int>> movesWithVals;
   int N = B.dim(), s = 0;
-
-    std::vector<int> V;
     for(int i = 0; i < N; ++i)
       for(int j = 0; j < N; ++j) {
         if (B.color(i,j)) {
-          B.choose(i,j);
-          int score=modelPlay(B, w1,w2,w3,w4,w5);
-          movesWithVals.push_back(std::pair<int,int>(i*N+j, score));
+          movesWithVals.push_back(play(B,i,j,w1,w2,w3,w4,w5));
         }
       }
-
   return movesWithVals;
 }
 
@@ -372,7 +373,13 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
     if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2))
       totalRed2++;
   }
-  int returnArr[] = {totalRed1, totalChips1, totalRed2, totalChips2};
+  // int* returnArr = {totalRed1, totalChips1, totalRed2, totalChips2};
+  int * returnArr = new int[4];
+  returnArr[0] = totalRed1;
+  returnArr[1] = totalChips1;
+  returnArr[2] = totalRed2;
+  returnArr[3] = totalChips2;
+
   return returnArr;
 
 }
@@ -380,9 +387,10 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
 int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
   int count = 0;
   for(int i=0;i<numBoards;i++) {
+    std::cout << "Board number " << i <<"\n";
     int steps = randInit + rand()%randRange;
     Board B(6,140,.4,boardType);
-    modelPlaySteps(B, w1,w2,w3,w4,w5,steps);
+    B = modelPlaySteps(B, w1,w2,w3,w4,w5,steps);
     std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
     for(int j=0;j<movesWithVals.size();j++) {
       for(int k=j+1;k<movesWithVals.size();k++) {
@@ -397,7 +405,7 @@ int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit,
     }
 
   }
-  std::cout<<"Count is" <<count <<"\n";
+  std::cout <<"Count is " <<count <<"\n";
   return count;
 
 }
@@ -412,11 +420,11 @@ int main(int argc, char** argv) {
   Board B(6,140,0.4,1); //1 for type 1
   Board C(6,140,0.4,2); //2 type 2
   Board D(6,140,0.4, 0);
-  modelPlaySteps(A, .25, .25, .25, .25, .25,10);
- printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
-  int a[100][4];
-  int y[100];
- generateData(10, 0, a,  y, 10, 7, .25, .25, .25, .25, .25);
+  // modelPlaySteps(A, .25, .25, .25, .25, .25,10);
+  // printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
+  int a[1000][4];
+  int y[1000];
+  generateData(1, 0, a,  y, 10, 7, .25, .25, .25, .25, .25);
   //modelPlay(A, .25, .25, .25, .25, .25);
 /**  A.print();
   std::cout<<"\n";
