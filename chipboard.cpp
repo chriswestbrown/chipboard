@@ -4,6 +4,7 @@
 #include <chrono>
 #include <cmath>
 #include <vector>
+#include <utility>
 
 
 
@@ -23,7 +24,9 @@ public:
   int score();
   void print();
   int dim() { return n; }
+
 private:
+  int w1, w2, w3, w4, w5;
   void pop(int r, int c);
   std::vector< std::vector< std::vector<int> > > B;
   double p;
@@ -179,6 +182,7 @@ void Board::print()
 std::cout<<"Sum of all chips on board: " << sum <<"\n";
 }
 
+
 int randplay(Board B) // note: copy!
 {
   int N = B.dim(), s = 0;
@@ -250,15 +254,172 @@ void humanplay(Board B)
   std::cout << "score = " << s << std::endl;
 }
 
+ double m(Board &B, int r, int c, int r2, int c2, double w1, double w2, double w3, double w4, double w5){
+  //std::cout<<"inside m function\n";
+  int totalChips1 = 0, totalRed1 = 0;
+  int totalChips2 = 0, totalRed2 = 0;
+  for(int i = 0; i <= 4; ++i)
+  {
+    int rp = r + dr[i], cp = c + dc[i];
+    int rp2 = r2 + dr[i], cp2 = c2 + dc[i];
+    if (in(rp,cp,B.dim()) && B.height(rp,cp))
+      totalChips1++;
+    if (in(rp,cp,B.dim()) && B.color(rp,cp))
+      totalRed1++;
+    if (in(rp2,cp2,B.dim()) && B.height(rp2,cp2))
+      totalChips2++;
+    if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2))
+      totalRed2++;
+  }
+//std::cout<<"About to call m with our different weights\n";
+  double returnVal = (w1*totalRed1) + (w2*totalChips1) + (w3*totalRed2) + (w4*totalChips2) + w5;
+//  std::cout<<"Our return value is " << returnVal << "\n";
+  return returnVal;
+}
+
+
+int modelPlay(Board B, double w1, double w2, double w3, double w4, double w5) // note: copy!
+{
+  int N = B.dim(), s = 0;
+  while((s = B.score()) < 0)
+  {
+    std::vector<int> V;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j)
+	        if (B.color(i,j))
+	           V.push_back(N*i + j);
+
+    int bestk = 0;
+    for(int k = 1; k < V.size(); k++)
+    {
+      int k1 = V[bestk]/N, k2 = V[bestk]%N;
+      int i = V[k]/N, j = V[k] % N;
+      if (m(B,k1,k2,i,j,w1,w2,w3,w4,w5)>0) {
+  //      std::cout<<"We called m here\n";
+        bestk = k; }
+
+    }
+    B.choose(V[bestk]/N,V[bestk] % N);
+  }
+  B.print();
+  return s;
+}
+
+int modelPlaySteps(Board &B, double w1, double w2, double w3, double w4, double w5, int steps ) // note: copy!
+{
+  int N = B.dim(), s = 0;
+  while((s = B.score()) < 0 && steps>0)
+  {
+    std::vector<int> V;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j)
+	        if (B.color(i,j))
+	           V.push_back(N*i + j);
+    int bestk = 0;
+    for(int k = 1; k < V.size(); k++)
+    {
+      int k1 = V[bestk]/N, k2 = V[bestk]%N;
+      int i = V[k]/N, j = V[k] % N;
+      if (m(B,k1,k2,i,j,w1,w2,w3,w4,w5)>0) {
+      //  std::cout<<"We called m here\n";
+        bestk = k; }
+
+    }
+    B.choose(V[bestk]/N,V[bestk] % N);
+    steps--;
+  }
+  B.print();
+  return s;
+}
+
+std::vector<std::pair<int,int>> getMovesWithValues(Board B, double w1, double w2, double w3, double w4, double w5) // note: copy!
+{
+  std::vector<std::pair<int,int>> movesWithVals;
+  int N = B.dim(), s = 0;
+
+    std::vector<int> V;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j) {
+        if (B.color(i,j)) {
+          B.choose(i,j);
+          int score=modelPlay(B, w1,w2,w3,w4,w5);
+          movesWithVals.push_back(std::pair<int,int>(i*N+j, score));
+        }
+      }
+
+  return movesWithVals;
+}
+
+void printVector(std::vector<std::pair<int,int>> a, int n) {
+  for (int i=0;i<a.size();i++) {
+    std::cout<<"("<<a[i].first/n<<","<<a[i].first%n<<") has playout value of " <<a[i].second <<"\n";
+  }
+}
+
+int* getFeatures(Board B, int r, int c, int r2, int c2){
+  int totalChips1 = 0, totalRed1 = 0;
+  int totalChips2 = 0, totalRed2 = 0;
+  for(int i = 0; i <= 4; ++i)
+  {
+    int rp = r + dr[i], cp = c + dc[i];
+    int rp2 = r2 + dr[i], cp2 = c2 + dc[i];
+    if (in(rp,cp,B.dim()) && B.height(rp,cp))
+      totalChips1++;
+    if (in(rp,cp,B.dim()) && B.color(rp,cp))
+      totalRed1++;
+    if (in(rp2,cp2,B.dim()) && B.height(rp2,cp2))
+      totalChips2++;
+    if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2))
+      totalRed2++;
+  }
+  int returnArr[] = {totalRed1, totalChips1, totalRed2, totalChips2};
+  return returnArr;
+
+}
+
+
+
+
+int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
+  int count = 0;
+  for(int i=0;i<numBoards;i++) {
+    int steps = randInit + rand()%randRange;
+    Board B(6,140,.4,boardType);
+    modelPlaySteps(B, w1,w2,w3,w4,w5,steps);
+    std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
+    for(int j=0;j<movesWithVals.size();j++) {
+      for(int k=j+1;k<movesWithVals.size();k++) {
+        if(movesWithVals[j].second != movesWithVals[k].second) {
+          x[count] = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6, movesWithVals[k].first/6, movesWithVals[k].first%6);
+          y[count] = movesWithVals[j].second - movesWithVals[k].second;
+          count++;
+        }
+      }
+    }
+
+  }
+  std::cout<<"Count is" <<count <<"\n";
+  return count;
+
+}
+
 int main(int argc, char** argv) {
 
 
   srand(argc > 1 ? atoi(argv[1]) : time(0));
   int sum = 0;
+
   Board A(6, 140, 0.4,0); // 0  for typoe 0
   Board B(6,140,0.4,1); //1 for type 1
   Board C(6,140,0.4,2); //2 type 2
-  A.print();
+  Board D(6,140,0.4, 0);
+  modelPlaySteps(A, .25, .25, .25, .25, .25,10);
+ printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
+  int a[100][4];
+  int y[100];
+ generateData(10, 0, a,  y, 10, 7, .25, .25, .25, .25, .25);
+  //modelPlay(A, .25, .25, .25, .25, .25);
+/**  A.print();
   std::cout<<"\n";
   greedyplay(A);
   std::cout<<"\n*********\n";
@@ -269,9 +430,11 @@ int main(int argc, char** argv) {
   C.print();
   std::cout<<"\n";
   greedyplay(C);
+  */
 
 
 }
+
 /**
 // Record start time
 auto start = std::chrono::high_resolution_clock::now();
