@@ -377,9 +377,6 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
 
 }
 
-
-
-
 int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
   int count = 0;
   for(int i=0;i<numBoards;i++) {
@@ -390,7 +387,9 @@ int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit,
     for(int j=0;j<movesWithVals.size();j++) {
       for(int k=j+1;k<movesWithVals.size();k++) {
         if(movesWithVals[j].second != movesWithVals[k].second) {
-          x[count] = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6, movesWithVals[k].first/6, movesWithVals[k].first%6);
+          int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6, movesWithVals[k].first/6, movesWithVals[k].first%6);
+          for(int l=0; l<4; l++)
+            x[count][l] = features[l];
           y[count] = movesWithVals[j].second - movesWithVals[k].second;
           count++;
         }
