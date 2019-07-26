@@ -82,3 +82,25 @@ class Learner:
         kind: Type of board to use when testing (0,1,2)"""
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
+
+    def learnThingsCPP(self,n=10,ep=10,lr_delta=.8,num_boards=400,kind=2,rand_init=10,rand_range=7):
+        """Generates data and then calls model.fit to learn from the collected data. Decreases
+        the learning rate by a provided value and tests the current model against greedy after
+        each round of genertion/fitting.
+        n: Number of times to generate data and then fit
+        ep: Epoch number for fitting
+        lr_delta: How much to decrease the learning rate by after each iteration
+        num_boards: Number of unique boards to consider when generating data
+        kind: Board type to create (0,1,2)"""
+        for i in range(n):
+            print("Starting round " + str(i))
+            x,y = numpy.zeros((size*40,4)),numpy.zeros((size**2))
+            weights = self.model.get_weights()
+            count = pats_code.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0],weights[0][1][0],weights[0][2][0],weights[0][3][0],weights[1][0])
+            x,y = x[:count],y[:count]
+            self.model.fit(x,y,epochs=ep)
+            self.lr *= lr_delta
+            self.opt = keras.optimizers.SGD(lr=self.lr)
+            self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
+            print("Just completed round " + str(i))
+            self.testKnowledge(1000,kind)
