@@ -25,7 +25,7 @@ class Board:
             self.init_winnable(kind)
 
     def init_0(self,vals):
-        for i in range(self.k-1):
+        for i in range(self.k):
             # r = random.randint(0,self.n-1)
             # c = random.randint(0,self.n-1)
             # cr = random.random() < self.p

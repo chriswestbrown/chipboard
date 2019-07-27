@@ -119,6 +119,7 @@ class Learner:
         vals = []
         for line in fileinput.input():
             vals = line.rstrip(",\n").split(", ")
+        vals.pop()
         for i in range(len(vals)):
             vals[i] = [int(j) for j in vals[i].lstrip("(").rstrip(")").split(",")]
         b = Board(6,140,.4,0,vals)
