@@ -5,8 +5,9 @@
 #include <cmath>
 #include <vector>
 #include <utility>
+#include <string>
 
-
+using namespace std;
 
 class Board
 {
@@ -385,51 +386,71 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
 
 }
 
+
+void generateDataOneRun(Board &B, int x[][4], int* y, int &count, int randInit, int randRange,
+		       double w1, double w2, double w3, double w4, double w5){
+  int steps = randInit + rand()%randRange;
+  B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
+  std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
+  for(int j=0;j<movesWithVals.size();j++) {
+    for(int k=j+1;k<movesWithVals.size();k++) {
+      if(movesWithVals[j].second != movesWithVals[k].second) {
+	int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+				   movesWithVals[k].first/6, movesWithVals[k].first%6);
+	for(int l=0; l<4; l++)
+	  x[count][l] = features[l];
+	y[count] = movesWithVals[j].second - movesWithVals[k].second;
+	count++;
+      }
+    }
+  }
+}
+
 int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
   int count = 0;
   for(int i=0;i<numBoards;i++) {
     std::cout << "Board number " << i <<"\n";
-    int steps = randInit + rand()%randRange;
     Board B(6,140,.4,boardType);
     B.print();
-    B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
-    std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
-    for(int j=0;j<movesWithVals.size();j++) {
-      for(int k=j+1;k<movesWithVals.size();k++) {
-        if(movesWithVals[j].second != movesWithVals[k].second) {
-          int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6, movesWithVals[k].first/6, movesWithVals[k].first%6);
-          for(int l=0; l<4; l++)
-            x[count][l] = features[l];
-          y[count] = movesWithVals[j].second - movesWithVals[k].second;
-          count++;
-        }
-      }
-    }
-
+    generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
   }
-  std::cout <<"Count is " <<count <<"\n";
   return count;
 
 }
 
 int main(int argc, char** argv) {
-
-
-  srand(argc > 1 ? atoi(argv[1]) : time(0));
+  bool genBoard = false, playBoard = false;
+  if (argc < 2) {
+    cerr << "usage: ..." << endl;
+    exit(1);
+  }
+  else if (argv[1] == string("-b")) {
+    genBoard = true;
+  }
+  else if (argv[1] == string("-p")) {
+    playBoard = true;
+  }
+      
+  srand(argc > 2 ? atoi(argv[2]) : time(0));
   int sum = 0;
 
-  // Board A(6, 140, 0.4,0); // 0  for typoe 0
-  // Board B(6,140,0.4,1); //1 for type 1
-  // Board C(6,140,0.4,2); //2 type 2
-  // Board D(6,140,0.4, 0);
-  // modelPlaySteps(A, .25, .25, .25, .25, .25,10);
-  // printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
-  int x[1000][4];
-  int y[1000];
-  int count = generateData(1, 0, x,  y, 10, 7, .25, .25, .25, .25, .25);
-  for(int i=0;i<count; i++){
-    std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
+  if (genBoard) { Board B(6,140,.4,0); B.print(); }
+  else if (playBoard) {
   }
+  else {
+    // Board A(6, 140, 0.4,0); // 0  for typoe 0
+    // Board B(6,140,0.4,1); //1 for type 1
+    // Board C(6,140,0.4,2); //2 type 2
+    // Board D(6,140,0.4, 0);
+    // modelPlaySteps(A, .25, .25, .25, .25, .25,10);
+    // printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
+    int x[1000][4];
+    int y[1000];
+    int count = generateData(1, 0, x,  y, 10, 7, .25, .25, .25, .25, .25);
+    for(int i=0;i<count; i++){
+      std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
+    }  
+}
   //modelPlay(A, .25, .25, .25, .25, .25);
 /**  A.print();
   std::cout<<"\n";
