@@ -430,7 +430,7 @@ int main(int argc, char** argv) {
   else if (argv[1] == string("-p")) {
     playBoard = true;
   }
-      
+
   srand(argc > 2 ? atoi(argv[2]) : time(0));
   int sum = 0;
 
@@ -449,7 +449,7 @@ int main(int argc, char** argv) {
     int count = generateData(1, 0, x,  y, 10, 7, .25, .25, .25, .25, .25);
     for(int i=0;i<count; i++){
       std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
-    }  
+    }
 }
   //modelPlay(A, .25, .25, .25, .25, .25);
 /**  A.print();
