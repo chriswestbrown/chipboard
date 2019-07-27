@@ -5,6 +5,7 @@ import numpy
 from board import Board, LFPlay
 from tactical import TacticalPlay, Tester
 import random
+import fileinput
 # import chipboard
 
 class Learner:
@@ -105,3 +106,33 @@ class Learner:
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
             print("Just completed round " + str(i))
             self.testKnowledge(1000,kind)
+
+    def generateTestData(self,X,Y,rand_init,rand_range):
+        """Creates a board, plays a semi-random number of steps on it, then stops to consider
+        all possible moves and their resulting values and adds them to provided arrays
+        n: Number of boards to consider
+        kind: Board type (0,1,2)
+        X: 2D numpy array that feature vectors will be added to as encountered
+        Y: 1D numpy array for score differences to be added to"""
+
+        count = 0
+        vals = []
+        for line in fileinput.input():
+            vals = line.rstrip(",\n").split(", ")
+        for i in range(len(vals)):
+            vals[i] = [int(j) for j in vals[i].lstrip("(").rstrip(")").split(",")]
+        b = Board(6,140,.4,0,vals)
+        steps = rand_init +random.randint(0,rand_range)
+        self.player.play(b,self.playFunc,steps)
+        L = self.player.getMovesWithValues(b,self.playFunc)
+        for i in range(len(L)):
+            for j in range(i+1,len(L)):
+                if L[i][1] != L[j][1]:
+                    r1,c1 = L[i][0]
+                    r2,c2 = L[j][0]
+                    features = self.player.adaptFeatures(numpy.concatenate((self.player.getPosFeatureVector(b,r1,c1),self.player.getPosFeatureVector(b,r2,c2))))
+                    result = L[i][1]-L[j][1]
+                    X[count] = features
+                    Y[count] = result
+                    count += 1
+        return (X[:count],Y[:count])
