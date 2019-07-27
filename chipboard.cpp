@@ -204,7 +204,7 @@ void Board::print()
     }
     std::cout << std::endl;
   }
-std::cout<<"Sum of all chips on board: " << sum <<"\n";
+//std::cout<<"Sum of all chips on board: " << sum <<"\n";
 }
 
 
