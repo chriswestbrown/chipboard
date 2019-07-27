@@ -71,6 +71,7 @@ int Board::putChoiceChip(int r, int c) {
   if(this->boardType==0) {
     bool cr = rand()/double(RAND_MAX) < this->p;
     B[r][c].push_back(cr);
+    std::cout << "("<<r<<","<<c<<","<<cr<<"),";
     return 1;
   }  else {
     int count=1;
@@ -390,7 +391,8 @@ int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit,
     std::cout << "Board number " << i <<"\n";
     int steps = randInit + rand()%randRange;
     Board B(6,140,.4,boardType);
-    B = modelPlaySteps(B, w1,w2,w3,w4,w5,steps);
+    B.print();
+    B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
     std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
     for(int j=0;j<movesWithVals.size();j++) {
       for(int k=j+1;k<movesWithVals.size();k++) {
@@ -416,15 +418,18 @@ int main(int argc, char** argv) {
   srand(argc > 1 ? atoi(argv[1]) : time(0));
   int sum = 0;
 
-  Board A(6, 140, 0.4,0); // 0  for typoe 0
-  Board B(6,140,0.4,1); //1 for type 1
-  Board C(6,140,0.4,2); //2 type 2
-  Board D(6,140,0.4, 0);
+  // Board A(6, 140, 0.4,0); // 0  for typoe 0
+  // Board B(6,140,0.4,1); //1 for type 1
+  // Board C(6,140,0.4,2); //2 type 2
+  // Board D(6,140,0.4, 0);
   // modelPlaySteps(A, .25, .25, .25, .25, .25,10);
   // printVector(getMovesWithValues(A, .25,.25,.25,.25,.25), 6);
-  int a[1000][4];
+  int x[1000][4];
   int y[1000];
-  generateData(1, 0, a,  y, 10, 7, .25, .25, .25, .25, .25);
+  int count = generateData(1, 0, x,  y, 10, 7, .25, .25, .25, .25, .25);
+  for(int i=0;i<count; i++){
+    std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
+  }
   //modelPlay(A, .25, .25, .25, .25, .25);
 /**  A.print();
   std::cout<<"\n";

@@ -5,6 +5,7 @@ import numpy
 from board import Board, LFPlay
 from tactical import TacticalPlay, Tester
 import random
+# import chipboard
 
 class Learner:
     def __init__(self,l):
@@ -96,7 +97,7 @@ class Learner:
             print("Starting round " + str(i))
             x,y = numpy.zeros((size*40,4)),numpy.zeros((size**2))
             weights = self.model.get_weights()
-            count = pats_code.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0],weights[0][1][0],weights[0][2][0],weights[0][3][0],weights[1][0])
+            count = chipboard.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0],weights[0][1][0],weights[0][2][0],weights[0][3][0],weights[1][0])
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=ep)
             self.lr *= lr_delta
