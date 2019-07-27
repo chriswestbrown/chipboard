@@ -110,7 +110,7 @@ class Learner:
     def generateTestData(self,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
         all possible moves and their resulting values and adds them to provided arrays
-        n: Number of boards to consider
+        n: Number of boards to consider 
         kind: Board type (0,1,2)
         X: 2D numpy array that feature vectors will be added to as encountered
         Y: 1D numpy array for score differences to be added to"""

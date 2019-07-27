@@ -34,7 +34,7 @@ class Board:
             self.B[r][c].append(cr)
             self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
             if cr:
-                self.numred += 1
+                self.numred += 1 
 
     def init_winnable(self,kind=1):
         self.p = (0 if kind == 1 else self.getProb())
