@@ -12,7 +12,7 @@ using namespace std;
 class Board
 {
 public:
-  Board(int n, int k, double p, int bt);
+  Board(int n, int kC, double p, int bt);
   int putChoiceChip(int r, int c);
   int putSurroundingChips(int r, int c);
   double getProb(double n, double p);
@@ -24,6 +24,7 @@ public:
   void choose(int r, int c);
   int score();
   void print();
+  void printString();
   int dim() { return n; }
 
 private:
@@ -32,6 +33,8 @@ private:
   std::vector< std::vector< std::vector<int> > > B;
   double p;
   int n;
+  int k;
+  std::string boardString;
   std::vector<int> bottomRVals;
   std::vector<int> bottomCVals;
   int boardType;
@@ -39,10 +42,11 @@ private:
 
 /** int n for size,int k for num chips, double p for probability, int bt for board type
 */
-Board::Board(int n, int k, double p, int bt)
+Board::Board(int n, int kC, double p, int bt)
 {
   this->p = p;
   this->n = n;
+  this->k = kC;
   this->boardType = bt;
   B.resize(n);
   for(auto itr = B.begin(); itr != B.end(); ++itr)
@@ -72,9 +76,23 @@ int Board::putChoiceChip(int r, int c) {
   if(this->boardType==0) {
     bool cr = rand()/double(RAND_MAX) < this->p;
     B[r][c].push_back(cr);
-    std::cout << "("<<r<<","<<c<<","<<cr<<"),";
+    this->boardString.append( "(" + std::to_string(r) + "," + std::to_string(c) + "," + std::to_string(cr) + "), ");
+  //  std::cout << "("<<r<<","<<c<<","<<cr<<"),";
     return 1;
-  }  else {
+  }  else if(this->boardType == -1) {
+    //std::cout<<"in this part of the code";
+    fflush(stdout);
+    int r,c, temp;
+    bool cr;
+    for(int i=0;i<k;i++) {
+      scanf("(%d,%d,%d), ", &r, &c, &temp);
+      cr = temp;
+      B[r][c].push_back(cr);
+  //    std::cout<<"AT position " <<r<<","<<c<<" it prints "<<cr;
+      fflush(stdout);
+    }
+    return this->k;
+}else {
     int count=1;
   //  std::cout<<"Placing choice chip at " <<r<<","<<c<<"\n";
     fflush(stdout);
@@ -87,6 +105,10 @@ int Board::putChoiceChip(int r, int c) {
   }
 }
 
+void Board::printString() {
+  std::cout<< this->boardString;
+}
+
 //use expected value to find probability to make sure 40% of chips are red
   double Board::getProb(double n, double p) {
         return -(3.0*pow(n,2.0)+3.0*n-540.0*p +2)/(12.0*pow(n,2.0)-3.0*n-2.0);
@@ -97,6 +119,7 @@ int Board::putChoiceChip(int r, int c) {
     int num = 0;
     if(in(r,c,this->n)==true) { //make sure location is ON the board
       B[r][c].push_back(color);
+      this->boardString.append("(" + std::to_string(r) + "," + std::to_string(c) + "," + std::to_string(color) + "), ");
       num = 1;
       if(height(r,c) == 1 && choiceChip==false) {
       //  std::cout<<"adding ("<< r<<","<<c<<") to bottom dwelling chips\n";
@@ -303,7 +326,7 @@ int modelPlay(Board B, double w1, double w2, double w3, double w4, double w5) //
     }
     B.choose(V[bestk]/N,V[bestk] % N);
   }
-  B.print();
+//  B.print();
   return s;
 }
 
@@ -409,9 +432,9 @@ void generateDataOneRun(Board &B, int x[][4], int* y, int &count, int randInit, 
 int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
   int count = 0;
   for(int i=0;i<numBoards;i++) {
-    std::cout << "Board number " << i <<"\n";
+    //std::cout << "Board number " << i <<"\n";
     Board B(6,140,.4,boardType);
-    B.print();
+  //  B.print();
     generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
   }
   return count;
@@ -434,10 +457,15 @@ int main(int argc, char** argv) {
   srand(argc > 2 ? atoi(argv[2]) : time(0));
   int sum = 0;
 
-  if (genBoard) { Board B(6,140,.4,0); B.print(); }
+  if (genBoard) { Board B(6,140,.4,0); B.printString();}
   else if (playBoard) {
-  }
-  else {
+    int x[1000][4];
+    int y[1000];
+    int count = generateData(1, -1, x,  y, 10, 7, .25, .25, .25, .25, .25);
+    for(int i=0;i<count; i++){
+      std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
+    }
+}else {
     // Board A(6, 140, 0.4,0); // 0  for typoe 0
     // Board B(6,140,0.4,1); //1 for type 1
     // Board C(6,140,0.4,2); //2 type 2
