@@ -6,12 +6,17 @@
 #include <vector>
 #include <utility>
 #include <string>
+#include<boost/python.hpp>
 
 using namespace std;
+using namespace boost::python;
+
 
 class Board
 {
 public:
+  //generateData
+
   Board(int n, int kC, double p, int bt);
   int putChoiceChip(int r, int c);
   int putSurroundingChips(int r, int c);
@@ -408,40 +413,100 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
   return returnArr;
 
 }
-
-
-void generateDataOneRun(Board &B, int x[][4], int* y, int &count, int randInit, int randRange,
-		       double w1, double w2, double w3, double w4, double w5){
-  int steps = randInit + rand()%randRange;
-  B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
-  std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
-  for(int j=0;j<movesWithVals.size();j++) {
-    for(int k=j+1;k<movesWithVals.size();k++) {
-      if(movesWithVals[j].second != movesWithVals[k].second) {
-	int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
-				   movesWithVals[k].first/6, movesWithVals[k].first%6);
-	for(int l=0; l<4; l++)
-	  x[count][l] = features[l];
-	y[count] = movesWithVals[j].second - movesWithVals[k].second;
-	count++;
+void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
+  int randRange,
+  double w1, double w2, double w3, double w4, double w5){
+    int steps = randInit + rand()%randRange;
+    B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
+    std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
+    for(int j=0;j<movesWithVals.size();j++) {
+      for(int k=j+1;k<movesWithVals.size();k++) {
+        if(movesWithVals[j].second != movesWithVals[k].second) {
+          int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+            movesWithVals[k].first/6, movesWithVals[k].first%6);
+            for(int l=0; l<4; l++)
+            x[count][l] = features[l];
+            y[count] = movesWithVals[j].second - movesWithVals[k].second;
+            count++;
+          }
+        }
       }
     }
-  }
+
+    int generateData(int numBoards, int boardType, int x[][4], int *y, int randInit,
+      int randRange, double w1, double w2, double w3, double w4, double w5){
+        int count = 0;
+        for(int i=0;i<numBoards;i++) {
+          //std::cout << "Board number " << i <<"\n";
+          Board B(6,140,.4,boardType);
+          std::cout<<"Next Board: ";
+          B.printString();
+          std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
+          //  B.print();
+          generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
+        }
+        return count;
+
 }
 
-int generateData(int numBoards, int boardType, int x[][4], int* y, int randInit, int randRange, double w1, double w2, double w3, double w4, double w5){
-  int count = 0;
-  for(int i=0;i<numBoards;i++) {
-    //std::cout << "Board number " << i <<"\n";
-    Board B(6,140,.4,boardType);
-  //  B.print();
-    generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
+
+
+
+
+
+
+
+class ChipboardBoost
+{
+  public:
+    void generateDataOneRun(Board &B, object x, object y, int &count, int randInit,
+      int randRange,
+      double w1, double w2, double w3, double w4, double w5){
+        int steps = randInit + rand()%randRange;
+        B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
+        std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
+        for(int j=0;j<movesWithVals.size();j++) {
+          for(int k=j+1;k<movesWithVals.size();k++) {
+            if(movesWithVals[j].second != movesWithVals[k].second) {
+              int*features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+                movesWithVals[k].first/6, movesWithVals[k].first%6);
+                for(int l=0; l<4; l++)
+                x[count][l] = features[l];
+                y[count] = movesWithVals[j].second - movesWithVals[k].second;
+                count++;
+              }
+            }
+          }
+        }
+
+        int generateData(int numBoards, int boardType, object x, object y, int randInit,
+          int randRange, float w1, float w2, float w3, float w4, float w5){
+            int count = 0;
+            for(int i=0;i<numBoards;i++) {
+              //std::cout << "Board number " << i <<"\n";
+              Board B(6,140,.4,boardType);
+              std::cout<<"Next Board: ";
+              B.printString();
+              std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
+              //  B.print();
+              generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
+            }
+            return count;
+
   }
-  return count;
+};
+
+BOOST_PYTHON_MODULE(chipboard)
+{
+  class_<ChipboardBoost>("ChipboardBoost", init<>())
+    .def("generateData", &ChipboardBoost::generateData);
 
 }
+
+
 
 int main(int argc, char** argv) {
+
   bool genBoard = false, playBoard = false;
   if (argc < 2) {
     cerr << "usage: ..." << endl;
@@ -461,11 +526,11 @@ int main(int argc, char** argv) {
   else if (playBoard) {
     int x[1000][4];
     int y[1000];
-    int count = generateData(1, -1, x,  y, 10, 7, .25, .25, .25, .25, .25);
+    int count = generateData(1, -1, x,  y, 10, 7, std::stod(argv[2]), std::stod(argv[3]), std::stod(argv[4]), std::stod(argv[5]), std::stod(argv[6]));
     for(int i=0;i<count; i++){
       std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
     }
-}else {
+  }else {
     // Board A(6, 140, 0.4,0); // 0  for typoe 0
     // Board B(6,140,0.4,1); //1 for type 1
     // Board C(6,140,0.4,2); //2 type 2
