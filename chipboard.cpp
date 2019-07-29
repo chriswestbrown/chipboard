@@ -161,8 +161,8 @@ void Board::removeExtraBottomLayer(int numChipsToRemove) {
     int y = bottomCVals.at(index);
     //std::cout<<"x and y to be popped are " << x << "," << y <<"\n";
     B[x][y].erase(B[x][y].begin());
-    std::swap(bottomRVals[index], bottomRVals[0]);
-    std::swap(bottomCVals[index], bottomCVals[0]);
+    std::swap(bottomRVals[index], bottomRVals[rangeSize-1]);
+    std::swap(bottomCVals[index], bottomCVals[rangeSize-1]);
     bottomRVals.pop_back();
     bottomCVals.pop_back();
     i++;
@@ -522,7 +522,9 @@ int main(int argc, char** argv) {
   srand(argc > 2 ? atoi(argv[2]) : time(0));
   int sum = 0;
 
-  if (genBoard) { Board B(6,140,.4,0); B.printString();}
+  if (genBoard) {
+    Board B(6,140,.4,0);
+     B.printString();}
   else if (playBoard) {
     int x[1000][4];
     int y[1000];
