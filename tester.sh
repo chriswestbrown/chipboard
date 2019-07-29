@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for i in {0..$1}
+for ((i = 1; i <= $1; i++));
 do
   echo $i
   ./chipboard -b > board.txt
