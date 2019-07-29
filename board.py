@@ -26,15 +26,17 @@ class Board:
 
     def init_0(self,vals):
         for i in range(self.k):
-            # r = random.randint(0,self.n-1)
-            # c = random.randint(0,self.n-1)
-            # cr = random.random() < self.p
-            r,c,t = vals[i]
-            cr = (t==1)
+            if(len(vals)==0):
+                r = random.randint(0,self.n-1)
+                c = random.randint(0,self.n-1)
+                cr = random.random() < self.p
+            else:
+                r,c,t = vals[i]
+                cr = (t==1)
             self.B[r][c].append(cr)
             self.A[r,c] = (math.fabs(self.A[r,c]) + 1) * (-1.0 if cr else 1.0)
             if cr:
-                self.numred += 1 
+                self.numred += 1
 
     def init_winnable(self,kind=1):
         self.p = (0 if kind == 1 else self.getProb())
