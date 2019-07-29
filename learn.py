@@ -6,7 +6,7 @@ from board import Board, LFPlay
 from tactical import TacticalPlay, Tester
 import random
 import fileinput
-# import chipboard
+import chipboard
 
 class Learner:
     def __init__(self,l):
@@ -25,13 +25,6 @@ class Learner:
         features = self.player.adaptFeatures(V)
         res =  self.model.predict(numpy.array([features]))
         return res[0][0]
-
-    def learnedEquation(self,V):
-        """Results from 8 rounds of 'learnThings' run on the model, which beats greedy >50% of the time
-        V: 36 item array returned in the form expected by the functions countRed and countRemoved from Board"""
-        features = self.player.adaptFeatures(V)
-        val = 1.01*features[0]-0.51*features[1]-.99*features[2]+.48*features[3]-.003
-        return val
 
     def generateData(self,n,kind,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
@@ -94,11 +87,12 @@ class Learner:
         lr_delta: How much to decrease the learning rate by after each iteration
         num_boards: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
+        chip = chipboard.ChipboardBoost()
         for i in range(n):
             print("Starting round " + str(i))
             x,y = numpy.zeros((size*40,4)),numpy.zeros((size**2))
             weights = self.model.get_weights()
-            count = chipboard.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0],weights[0][1][0],weights[0][2][0],weights[0][3][0],weights[1][0])
+            count = chip.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0],weights[0][1][0],weights[0][2][0],weights[0][3][0],weights[1][0])
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=ep)
             self.lr *= lr_delta
@@ -106,11 +100,12 @@ class Learner:
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
             print("Just completed round " + str(i))
             self.testKnowledge(1000,kind)
+            print("Current weights "+self.model.get_weights)
 
     def generateTestData(self,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
         all possible moves and their resulting values and adds them to provided arrays
-        n: Number of boards to consider 
+        n: Number of boards to consider
         kind: Board type (0,1,2)
         X: 2D numpy array that feature vectors will be added to as encountered
         Y: 1D numpy array for score differences to be added to"""
