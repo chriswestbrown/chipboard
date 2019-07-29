@@ -87,7 +87,8 @@ class Learner:
         lr_delta: How much to decrease the learning rate by after each iteration
         num_boards: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
-        chip = chipboard.ChipboardBoost()
+
+        chip = board.ChipboardBoost()
         for i in range(n):
             print("Starting round " + str(i))
             x,y = numpy.zeros((size*40,4)),numpy.zeros((size**2))
