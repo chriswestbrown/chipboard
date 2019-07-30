@@ -7,6 +7,7 @@
 #include <utility>
 #include <string>
 #include<boost/python.hpp>
+#include<limits.h>
 
 using namespace std;
 using namespace boost::python;
@@ -266,7 +267,7 @@ int greedyplay(Board B) // note: copy!
     }
     B.choose(V[bestk]/N,V[bestk] % N);
   }
-  B.print();
+  // B.print();
   return s;
 }
 
@@ -440,7 +441,7 @@ void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
           //std::cout << "Board number " << i <<"\n";
           Board B(6,140,.4,boardType);
           std::cout<<"Next Board: ";
-          B.printString();
+          // B.printString();
           std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
           //  B.print();
           generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
@@ -480,26 +481,39 @@ class ChipboardBoost
         }
 
         int generateData(int numBoards, int boardType, object x, object y, int randInit,
-          int randRange, float w1, float w2, float w3, float w4, float w5){
+          int randRange, float w1, float w2, float w3, float w4, float w5,float rand_seed){
+            srand(int(double(rand_seed)*UINT_MAX));
             int count = 0;
             for(int i=0;i<numBoards;i++) {
               //std::cout << "Board number " << i <<"\n";
               Board B(6,140,.4,boardType);
-              std::cout<<"Next Board: ";
-              B.printString();
-              std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
-              //  B.print();
+              // std::cout<<"Next Board: ";
+              // B.printString();
+            /**  std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
+              //  B.print(); */
               generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
             }
             return count;
 
-  }
+        }
+        double testKnowledge(int num,float w1, float w2, float w3, float w4, float w5,float rand_seed,int boardType){
+          srand(int(double(rand_seed)*UINT_MAX));
+          int score = 0;
+          for(int i=0; i<num; i++){
+            Board B(6,140,.4,boardType);
+            score += modelPlay(B, w1, w2, w3, w4, w5);
+          }
+          double avgScore = (1.0*score)/num;
+          return avgScore;
+        }
+
 };
 
 BOOST_PYTHON_MODULE(chipboard)
 {
   class_<ChipboardBoost>("ChipboardBoost", init<>())
-    .def("generateData", &ChipboardBoost::generateData);
+    .def("generateData", &ChipboardBoost::generateData)
+    .def("testKnowledge",&ChipboardBoost::testKnowledge);
 
 }
 

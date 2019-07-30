@@ -7,16 +7,36 @@ from tactical import TacticalPlay, Tester
 import random
 import fileinput
 import chipboard
+import sys
+import math
+
+epochs = [10,1,5,20,50]
+lr = [0.001,1.0,0.01,0.1,0.0001]
+ld = [0.8,0.9,0.7,0.6,0.5]
+nb = [400,100,200,800,1600]
+# rands = [(10,7)]
+
+sets = []
+for i in range(len(epochs)):
+    for j in range(len(lr)):
+        for k in range(len(ld)):
+            for l in range(len(nb)):
+                sets.append((epochs[i],lr[j],ld[k],nb[l]))
+
+
+
+
 
 class Learner:
-    def __init__(self,l):
+    def __init__(self,index):
         """l denotes the starting value of the lerning rate of the optimizer"""
-        self.lr = l
+        self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
         self.model = keras.Sequential()
         self.model.add(Dense(1,input_dim=4,activation='linear'))
-        self.opt = keras.optimizers.SGD(lr=self.lr)
+        self.opt = keras.optimizers.SGD(lr=self.learning_rate)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
+        self.totalBoards = 20000
 
     def playFunc(self,V):
         """Creates the correct feature vector and returns the predicted value from the model,
@@ -52,7 +72,7 @@ class Learner:
                         count += 1
         return (X[:count],Y[:count])
 
-    def learnThings(self,n=10,ep=10,lr_delta=.8,size=400,kind=2,rand_init=10,rand_range=7):
+    def learnThings(self,kind=2,rand_init=10,rand_range=7):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
@@ -61,15 +81,15 @@ class Learner:
         lr_delta: How much to decrease the learning rate by after each iteration
         size: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
-        for i in range(n):
-            print("Starting round " + str(i))
-            x,y = self.generateData(size,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)),rand_init,rand_range)
-            self.model.fit(x,y,epochs=ep)
-            self.lr *= lr_delta
-            self.opt = keras.optimizers.SGD(lr=self.lr)
+        for i in range(math.ceil(self.totalBoards/self.num_boards)):
+            # print("Starting round " + str(i))
+            x,y = self.generateData(self.num_boards,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)),rand_init,rand_range)
+            self.model.fit(x,y,epochs=self.epochs,verbose=0)
+            self.learning_rate *= self.learning_decay
+            self.opt = keras.optimizers.SGD(lr=self.learning_rate)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
-            print("Just completed round " + str(i))
-            self.testKnowledge(1000,kind)
+            # print("Just completed round " + str(i))
+            # self.testKnowledge(1000,kind)
 
     def testKnowledge(self,n,kind):
         """Tests the current model's prediction against greedy
@@ -78,30 +98,41 @@ class Learner:
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
 
-    def learnThingsCPP(self,size=400,n=10,ep=10,lr_delta=.8,num_boards=400,kind=0,rand_init=10,rand_range=7):
+    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",testBoards=1000):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
         n: Number of times to generate data and then fit
         ep: Epoch number for fitting
         lr_delta: How much to decrease the learning rate by after each iteration
-        num_boards: Number of unique boards to consider when generating data
+        num_boards:la Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
 
-        chip = chipboard.ChipboardBoost()
-        for i in range(n):
-            print("Starting round " + str(i))
-            x,y = numpy.zeros((size**2,4)),numpy.zeros((size**2))
+        f = sys.stdout
+        if file != "stdout":
+            f = open(file,"w")
+
+        boardsPlayed = 0
+        boards_until_test = test_inc
+        self.chip = chipboard.ChipboardBoost()
+        for i in range(math.ceil(self.totalBoards/self.num_boards)):
+            x,y = numpy.zeros((self.num_boards**2,4)),numpy.zeros((self.num_boards**2))
             weights = self.model.get_weights()
-            count = chip.generateData(num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item())
+            count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random())
             x,y = x[:count],y[:count]
-            self.model.fit(x,y,epochs=ep)
-            self.lr *= lr_delta
-            self.opt = keras.optimizers.SGD(lr=self.lr)
+            self.model.fit(x,y,epochs=self.epochs,verbose=0)
+            boardsPlayed += self.num_boards
+            if boardsPlayed >= boards_until_test:
+                avgScore = self.chip.testKnowledge(testBoards,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),kind)
+                f.write("("+str(boardsPlayed)+", "+str(avgScore)+"),")
+                boards_until_test += test_inc
+            self.learning_rate *= self.learning_decay
+            self.opt = keras.optimizers.SGD(lr=self.learning_rate)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
-            print("Just completed round " + str(i))
-            self.testKnowledge(100,kind)
-            print("Current weights "+str(self.model.get_weights()))
+        # f.close()
+    def testKnowledgeCPP(self,num=1000,boardType=2):
+        weights = self.model.get_weights()
+        self.chip.testKnowledge(num,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),boardType)
 
     def generateTestData(self,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
