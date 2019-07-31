@@ -415,6 +415,29 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
 
 }
 
+bool isPotentialLinker(Board B, int r, int c, int r0, int c0) {
+  int numRed=0;
+  int r1,r2;
+  for(int i = 0; i <= 4; ++i)
+  {
+    int rp = r + dr[i], cp = c + dc[i];
+    if (in(rp,cp,B.dim()) && B.color(rp,cp)) {
+        r1 = rp;
+        r2 = cp;
+        numRed++;
+      }
+    }
+    if(numRed==0) {
+    //  std::cout<<r0<<","<<c0<<" is where something could get linked"<<endl;
+      return true;
+
+    } else {
+      return false;
+    }
+
+  }
+
+
 
 bool isStrander(Board B, int r, int c, int r0, int c0) {
   int numRed=0;
@@ -430,7 +453,7 @@ bool isStrander(Board B, int r, int c, int r0, int c0) {
       }
     }
     if(numRed==1 && B.color(r0,c0)) {
-      std::cout<<"\n"<<r0<<","<<c0<<" is where something gets stranded"<<endl;
+    //  std::cout<<r0<<","<<c0<<" is where something gets stranded"<<endl;
       return true;
 
     } else {
@@ -441,6 +464,45 @@ bool isStrander(Board B, int r, int c, int r0, int c0) {
 
   int drB[] = {+1, 0,-1,-2,-1,0,+1,+2,+1};
   int dcB[] = {-1, -2,-1,0,+1,+2,+1,0,-1};
+
+  int getPotentialFeatures(Board B, int r, int c, int location) {
+    int numLinkers = 0;
+    int dr0=r+drB[0], dc0=c+dcB[0];
+    int dr1=r+drB[1], dc1=c+dcB[1];
+    int dr2=r+drB[2], dc2=c+dcB[2];
+    int dr3=r+drB[3], dc3=c+dcB[3];
+    int dr4=r+drB[4], dc4=c+dcB[4];
+    int dr5=r+drB[5], dc5=c+dcB[5];
+    int dr6=r+drB[6], dc6=c+dcB[6];
+    int dr7=r+drB[7], dc7=c+dcB[7];
+    int dr8=r+drB[8], dc8=c+dcB[8];
+
+    switch(location) {
+      case 1:
+        if(in(dr0,dc0,B.dim()) && isPotentialLinker(B, dr0,dc0, r, c-1)){numLinkers++;}
+        if(in(dr1, dc1,B.dim()) && isPotentialLinker(B,dr1, dc1, r, c-1)){numLinkers++;}
+        if(in(dr2,dc2,B.dim()) && isPotentialLinker(B,dr2,dc2, r, c-1)){numLinkers++;}
+        break;
+      case 2:
+        if(in(dr2,dc2,B.dim()) && isPotentialLinker(B,dr2,dc2, r-1, c)){numLinkers++;}
+        if(in(dr3,dc3,B.dim()) && isPotentialLinker(B,dr3,dc3, r-1, c)){numLinkers++;}
+        if(in(dr4,dc4,B.dim()) && isPotentialLinker(B,dr4,dc4, r-1, c)){numLinkers++;}
+        break;
+      case 3:
+        if(in(dr4,dc4,B.dim()) && isPotentialLinker(B,dr4,dc4, r, c+1)){numLinkers++;}
+        if(in(dr5,dc5,B.dim()) && isPotentialLinker(B,dr5,dc5, r, c+1)){numLinkers++;}
+        if(in(dr6,dc6,B.dim()) && isPotentialLinker(B,dr6,dc6, r, c+1)){numLinkers++;}
+        break;
+      case 4:
+        if(in(dr6,dc6,B.dim()) && isPotentialLinker(B,dr6,dc6, r+1, c)){numLinkers++;}
+        if(in(dr7,dc7,B.dim()) && isPotentialLinker(B,dr7,dc7, r+1, c)){numLinkers++;}
+        if(in(dr8,dc8,B.dim()) && isPotentialLinker(B,dr8,dc8, r+1, c)){numLinkers++;}
+        break;
+
+    }
+    return numLinkers;
+
+  }
 
 
 
@@ -485,33 +547,41 @@ int getExtFeatures(Board B, int r, int c, int location) {
 }
 
 int* getMoreFeatures(Board B, int r, int c, int r2, int c2){
-  int totalChips1 = 0, totalRed1 = 0, numStranders1 = 0;
-  int totalChips2 = 0, totalRed2 = 0, numStranders2 = 0;
+  int totalChips1 = 0, totalRed1 = 0, numStranders1 = 0,  numLinkers1 =0;
+  int totalChips2 = 0, totalRed2 = 0, numStranders2 = 0, numLinkers2 =0;
   for(int i = 0; i <= 4; ++i)
   {
     int rp = r + dr[i], cp = c + dc[i];
     int rp2 = r2 + dr[i], cp2 = c2 + dc[i];
     if (in(rp,cp,B.dim()) && B.height(rp,cp))
       totalChips1++;
-    if (in(rp,cp,B.dim()) && B.color(rp,cp))
+    if (in(rp,cp,B.dim()) && B.color(rp,cp)) {
       totalRed1++;
       if(i!=0) {  numStranders1 += getExtFeatures(B, r, c, i);}
+    } else {
+      numLinkers1 += getPotentialFeatures(B, r, c, i);
+    }
     if (in(rp2,cp2,B.dim()) && B.height(rp2,cp2))
       totalChips2++;
-    if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2))
+    if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2)) {
       totalRed2++;
       if(i!=0) {  numStranders2 += getExtFeatures(B, r2, c2, i);}
+    } else {
+      numLinkers2 += getPotentialFeatures(B, r2, c2, i);
+    }
 
   }
   // int* returnArr = {totalRed1, totalChips1, totalRed2, totalChips2};
-  int * returnArr = new int[6];
+  int * returnArr = new int[8];
   returnArr[0] = totalRed1;
   returnArr[1] = totalChips1;
   returnArr[2] = numStranders1;
-  returnArr[3] = totalRed2;
-  returnArr[4] = totalChips2;
-  returnArr[5]=  numStranders2;
-  for(int i=0;i<6;i++) {
+  returnArr[3] = numLinkers1;
+  returnArr[4] = totalRed2;
+  returnArr[5] = totalChips2;
+  returnArr[6] =  numStranders2;
+  returnArr[7] = numLinkers2;
+  for(int i=0;i<8;i++) {
     std::cout<<returnArr[i]<<" ";
   }
   std::cout<<endl;
@@ -520,8 +590,7 @@ int* getMoreFeatures(Board B, int r, int c, int r2, int c2){
 }
 
 void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
-  int randRange,
-  double w1, double w2, double w3, double w4, double w5){
+  int randRange, double w1, double w2, double w3, double w4, double w5){
     int steps = randInit + rand()%randRange;
     B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
     std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
@@ -556,12 +625,6 @@ void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
 }
 
 
-
-
-
-
-
-
 class ChipboardBoost
 {
   public:
@@ -590,12 +653,8 @@ class ChipboardBoost
             srand(int(double(rand_seed)*UINT_MAX));
             int count = 0;
             for(int i=0;i<numBoards;i++) {
-              //std::cout << "Board number " << i <<"\n";
               Board B(6,140,.4,boardType);
-              // std::cout<<"Next Board: ";
-              // B.printString();
-            /**  std::cout<<"\nfloats w1-w5 are as follows: (" <<w1<< ","<<w2<< ","<<w3<< ","<<w4<< ","<<w5<< ")\n";
-              //  B.print(); */
+
               generateDataOneRun(B, x, y, count, randInit, randRange, w1,w2,w3,w4,w5);
             }
             return count;
@@ -648,12 +707,6 @@ int main(int argc, char** argv) {
   if (genBoard) {
     Board B(6,140,.4,0);
     B.printString();
-    std::cout<<"\n";
-    B.print();
-    std::cout<<"features at 0,0 and 5,5 are ";
-    getMoreFeatures(B, 0,0,5,5);
-    std::cout<<"features at 2,2 and 4,4 are ";
-    getMoreFeatures(B, 2,2,4,4);
 }  else if (playBoard) {
     int x[1000][4];
     int y[1000];
