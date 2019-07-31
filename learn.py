@@ -11,9 +11,10 @@ import sys
 import math
 
 epochs = [10,1,5,20,50]
-lr = [0.001,0.00001,0.01,0.000001,0.0001]
+lr = [0.001,0.00001,0.01,0.005,0.0001]
 ld = [0.8,0.9,0.7,0.6,0.5]
 nb = [400,100,200,800,1600]
+nodes = [2,4,8,16,32]
 # rands = [(10,7)]
 
 sets = []
@@ -21,18 +22,26 @@ for i in range(len(epochs)):
     for j in range(len(lr)):
         for k in range(len(ld)):
             for l in range(len(nb)):
-                sets.append((epochs[i],lr[j],ld[k],nb[l]))
+                for m in range(len(nodes)):
+                    sets.append((epochs[i],lr[j],ld[k],nb[l],nodes[m]))
 
 
 
 
 
 class Learner:
-    def __init__(self,index):
-        """l denotes the starting value of the lerning rate of the optimizer"""
-        self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
+    def __init__(self,index,numFeatures,numLayers):
+        self.epochs,self.learning_rate,self.learning_decay,self.num_boards,self.num_nodes = sets[index]
         self.model = keras.Sequential()
-        self.model.add(Dense(1,input_dim=4,activation='linear'))
+        self.num_features = numFeatures
+        if numLayers == 1:
+            self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False))
+        elif numLayers == 2:
+            self.model.add(Dense(self.num_nodes,input_dim=self.num_features,activation='relu'))
+            self.model.add(Dense(1,activation='linear',use_bias=False))
+        else:
+            exit()
+
         self.opt = keras.optimizers.SGD(lr=self.learning_rate)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
@@ -119,21 +128,28 @@ class Learner:
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
-        weights = self.model.get_weights()
-        initialTest = self.chip.testKnowledge(testBoards,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),kind)
+        weights = []
+        w = self.model.get_weights()
+        weights.append(w[0].tolist())
+        weights.append(w[1].tolist())
+        weights.append(w[2].tolist())
+        initialTest = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
-        wf.write("("+str(weights[0][0][0])+","+str(weights[0][1][0])+","+str(weights[0][2][0])+","+str(weights[0][3][0])+","+str(weights[1][0])+"), ")
+        wf.write(str(weights)+"\n")
         for i in range(math.ceil(self.totalBoards/self.num_boards)):
-            x,y = numpy.zeros((self.num_boards**2,4)),numpy.zeros((self.num_boards**2))
-            weights = self.model.get_weights()
-            count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random())
+            x,y = numpy.zeros((self.num_boards**2,self.num_features)),numpy.zeros((self.num_boards**2))
+            w = self.model.get_weights()
+            weights.append(w[0].tolist())
+            weights.append(w[1].tolist())
+            weights.append(w[2].tolist())
+            count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
-                avgScore = self.chip.testKnowledge(testBoards,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),kind)
+                avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
                 f.write("("+str(boardsPlayed)+","+str(avgScore)+"), ")
-                wf.write("("+str(weights[0][0][0])+","+str(weights[0][1][0])+","+str(weights[0][2][0])+","+str(weights[0][3][0])+","+str(weights[1][0])+"), ")
+                wf.write(str(weights)+"\n")
                 boards_until_test += test_inc
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate)
