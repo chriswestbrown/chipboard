@@ -521,7 +521,7 @@ BOOST_PYTHON_MODULE(chipboard)
 
 int main(int argc, char** argv) {
 
-  bool genBoard = false, playBoard = false;
+  bool genBoard = false, playBoard = false, testGreedy = false;
   if (argc < 2) {
     cerr << "usage: ..." << endl;
     exit(1);
@@ -531,6 +531,10 @@ int main(int argc, char** argv) {
   }
   else if (argv[1] == string("-p")) {
     playBoard = true;
+  }
+  else if (argv[1] == string("-g")){
+    std::cout << "Hi\n";
+    testGreedy = true;
   }
 
   srand(argc > 2 ? atoi(argv[2]) : time(0));
@@ -546,7 +550,18 @@ int main(int argc, char** argv) {
     for(int i=0;i<count; i++){
       std::cout << x[i][0] << ", " << x[i][1] << ", " << x[i][2] << ", " << x[i][3] << "\n" << y[i] << "\n";
     }
-  }else {
+  }
+  else if (testGreedy) {
+    std::cout <<"HI\n";
+    int score = 0;
+    for(int i=0; i<10000; i++){
+      Board B(6,140,.4,2);
+      score += greedyplay(B);
+    }
+    double avgScore = (1.0*score)/10000;
+    std::cout << "The average score for greedy over 10000 runs on a type 2 board is " << avgScore << "\n";
+  }
+  else {
     // Board A(6, 140, 0.4,0); // 0  for typoe 0
     // Board B(6,140,0.4,1); //1 for type 1
     // Board C(6,140,0.4,2); //2 type 2

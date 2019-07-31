@@ -11,7 +11,7 @@ import sys
 import math
 
 epochs = [10,1,5,20,50]
-lr = [0.001,1.0,0.01,0.1,0.0001]
+lr = [0.001,0.00001,0.01,0.000001,0.0001]
 ld = [0.8,0.9,0.7,0.6,0.5]
 nb = [400,100,200,800,1600]
 # rands = [(10,7)]
@@ -36,7 +36,7 @@ class Learner:
         self.opt = keras.optimizers.SGD(lr=self.learning_rate)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
-        self.totalBoards = 20000
+        self.totalBoards = 10000
 
     def playFunc(self,V):
         """Creates the correct feature vector and returns the predicted value from the model,
@@ -98,7 +98,7 @@ class Learner:
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
 
-    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",testBoards=1000):
+    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=1000):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
@@ -108,13 +108,21 @@ class Learner:
         num_boards:la Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
 
+        wf = sys.stdout
         f = sys.stdout
         if file != "stdout":
             f = open(file,"w")
+        if weightFile != "stdout":
+            wf = open(weightFile,"w")
+
 
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
+        weights = self.model.get_weights()
+        initialTest = self.chip.testKnowledge(testBoards,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),kind)
+        f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
+        wf.write("("+str(weights[0][0][0])+","+str(weights[0][1][0])+","+str(weights[0][2][0])+","+str(weights[0][3][0])+","+str(weights[1][0])+"), ")
         for i in range(math.ceil(self.totalBoards/self.num_boards)):
             x,y = numpy.zeros((self.num_boards**2,4)),numpy.zeros((self.num_boards**2))
             weights = self.model.get_weights()
@@ -124,7 +132,8 @@ class Learner:
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
                 avgScore = self.chip.testKnowledge(testBoards,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),kind)
-                f.write("("+str(boardsPlayed)+", "+str(avgScore)+"),")
+                f.write("("+str(boardsPlayed)+","+str(avgScore)+"), ")
+                wf.write("("+str(weights[0][0][0])+","+str(weights[0][1][0])+","+str(weights[0][2][0])+","+str(weights[0][3][0])+","+str(weights[1][0])+"), ")
                 boards_until_test += test_inc
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate)
