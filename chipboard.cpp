@@ -414,6 +414,111 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
   return returnArr;
 
 }
+
+
+bool isStrander(Board B, int r, int c, int r0, int c0) {
+  int numRed=0;
+  int r1,r2;
+  for(int i = 0; i <= 4; ++i)
+  {
+    int rp = r + dr[i], cp = c + dc[i];
+    if (in(rp,cp,B.dim()) && B.color(rp,cp)) {
+        if(B.height(r,c)==1) {numRed--;}
+        r1 = rp;
+        r2 = cp;
+        numRed++;
+      }
+    }
+    if(numRed==1 && B.color(r0,c0)) {
+      std::cout<<"\n"<<r0<<","<<c0<<" is where something gets stranded"<<endl;
+      return true;
+
+    } else {
+      return false;
+    }
+
+  }
+
+  int drB[] = {+1, 0,-1,-2,-1,0,+1,+2,+1};
+  int dcB[] = {-1, -2,-1,0,+1,+2,+1,0,-1};
+
+
+
+
+int getExtFeatures(Board B, int r, int c, int location) {
+  int numStranders = 0;
+  int dr0=r+drB[0], dc0=c+dcB[0];
+  int dr1=r+drB[1], dc1=c+dcB[1];
+  int dr2=r+drB[2], dc2=c+dcB[2];
+  int dr3=r+drB[3], dc3=c+dcB[3];
+  int dr4=r+drB[4], dc4=c+dcB[4];
+  int dr5=r+drB[5], dc5=c+dcB[5];
+  int dr6=r+drB[6], dc6=c+dcB[6];
+  int dr7=r+drB[7], dc7=c+dcB[7];
+  int dr8=r+drB[8], dc8=c+dcB[8];
+
+  switch(location) {
+    case 1:
+      if(in(dr0,dc0,B.dim()) && isStrander(B, dr0,dc0, r, c-1)){numStranders++;}
+      if(in(dr1, dc1,B.dim()) && isStrander(B,dr1, dc1, r, c-1)){numStranders++;}
+      if(in(dr2,dc2,B.dim()) && isStrander(B,dr2,dc2, r, c-1)){numStranders++;}
+      break;
+    case 2:
+      if(in(dr2,dc2,B.dim()) && isStrander(B,dr2,dc2, r-1, c)){numStranders++;}
+      if(in(dr3,dc3,B.dim()) && isStrander(B,dr3,dc3, r-1, c)){numStranders++;}
+      if(in(dr4,dc4,B.dim()) && isStrander(B,dr4,dc4, r-1, c)){numStranders++;}
+      break;
+    case 3:
+      if(in(dr4,dc4,B.dim()) && isStrander(B,dr4,dc4, r, c+1)){numStranders++;}
+      if(in(dr5,dc5,B.dim()) && isStrander(B,dr5,dc5, r, c+1)){numStranders++;}
+      if(in(dr6,dc6,B.dim()) && isStrander(B,dr6,dc6, r, c+1)){numStranders++;}
+      break;
+    case 4:
+      if(in(dr6,dc6,B.dim()) && isStrander(B,dr6,dc6, r+1, c)){numStranders++;}
+      if(in(dr7,dc7,B.dim()) && isStrander(B,dr7,dc7, r+1, c)){numStranders++;}
+      if(in(dr8,dc8,B.dim()) && isStrander(B,dr8,dc8, r+1, c)){numStranders++;}
+      break;
+
+  }
+  return numStranders;
+
+}
+
+int* getMoreFeatures(Board B, int r, int c, int r2, int c2){
+  int totalChips1 = 0, totalRed1 = 0, numStranders1 = 0;
+  int totalChips2 = 0, totalRed2 = 0, numStranders2 = 0;
+  for(int i = 0; i <= 4; ++i)
+  {
+    int rp = r + dr[i], cp = c + dc[i];
+    int rp2 = r2 + dr[i], cp2 = c2 + dc[i];
+    if (in(rp,cp,B.dim()) && B.height(rp,cp))
+      totalChips1++;
+    if (in(rp,cp,B.dim()) && B.color(rp,cp))
+      totalRed1++;
+      if(i!=0) {  numStranders1 += getExtFeatures(B, r, c, i);}
+    if (in(rp2,cp2,B.dim()) && B.height(rp2,cp2))
+      totalChips2++;
+    if (in(rp2,cp2,B.dim()) && B.color(rp2,cp2))
+      totalRed2++;
+      if(i!=0) {  numStranders2 += getExtFeatures(B, r2, c2, i);}
+
+  }
+  // int* returnArr = {totalRed1, totalChips1, totalRed2, totalChips2};
+  int * returnArr = new int[6];
+  returnArr[0] = totalRed1;
+  returnArr[1] = totalChips1;
+  returnArr[2] = numStranders1;
+  returnArr[3] = totalRed2;
+  returnArr[4] = totalChips2;
+  returnArr[5]=  numStranders2;
+  for(int i=0;i<6;i++) {
+    std::cout<<returnArr[i]<<" ";
+  }
+  std::cout<<endl;
+  return returnArr;
+
+}
+
 void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
   int randRange,
   double w1, double w2, double w3, double w4, double w5){
@@ -542,8 +647,14 @@ int main(int argc, char** argv) {
 
   if (genBoard) {
     Board B(6,140,.4,0);
-     B.printString();}
-  else if (playBoard) {
+    B.printString();
+    std::cout<<"\n";
+    B.print();
+    std::cout<<"features at 0,0 and 5,5 are ";
+    getMoreFeatures(B, 0,0,5,5);
+    std::cout<<"features at 2,2 and 4,4 are ";
+    getMoreFeatures(B, 2,2,4,4);
+}  else if (playBoard) {
     int x[1000][4];
     int y[1000];
     int count = generateData(1, -1, x,  y, 10, 7, std::stod(argv[2]), std::stod(argv[3]), std::stod(argv[4]), std::stod(argv[5]), std::stod(argv[6]));
