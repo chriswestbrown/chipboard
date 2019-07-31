@@ -4,10 +4,7 @@
 #PBS -l place=scatter:excl
 #PBS -A MHPCC96650N19
 #PBS -q debug
-#PBS -l walltime=0:01:00
-#PBS -j oe
-#PBS -o $WORKDIR/output.txt
-#PBS -e $WORKDIR/error.txt
+#PBS -l walltime=0:00:10
 #PBS -N helloWorldTest
 
 
