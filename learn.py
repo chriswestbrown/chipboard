@@ -42,7 +42,7 @@ class Learner:
         else:
             exit()
 
-        self.opt = keras.optimizers.SGD(lr=self.learning_rate)
+        self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
         self.totalBoards = 20000
@@ -125,6 +125,7 @@ class Learner:
             wf = open(weightFile,"w")
 
 
+        print(self.num_boards)
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
@@ -133,7 +134,7 @@ class Learner:
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
         wf.write(str(weights)+"\n")
         for i in range(math.ceil(self.totalBoards/self.num_boards)):
-            x,y = numpy.zeros((self.num_boards**2,self.num_features)),numpy.zeros((self.num_boards**2))
+            x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
             x,y = x[:count],y[:count]
