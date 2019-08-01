@@ -1,16 +1,17 @@
 #!/bin/bash
 
-#PBS -l select=1:ncpus=30:mpiprocs=30
+#PBS -l select=3:ncpus=5:mpiprocs=5
 #PBS -l place=scatter:excl
 #PBS -A MHPCC96650N19
-#PBS -q background
-#PBS -l walltime=0:03:00
-#PBS -j oe
-#PBS -N HelloWorldTest
+#PBS -q debug
+#PBS -l walltime=0:01:00
+#PBS -o ${WORKDIR}/output.txt
+#PBS -e ${WORKDIR}/error.txt
+#PBS -N helloWorldTest
 
-export PYTHONWARNINGS="ignore"
-cd $WORKDIR/HPC
+cd ${WORKDIR}
 module purge
-module load pbs tensorflow/1.8.0 spectrum-mpi cuda/9.2
-export PYTHONPATH="$WORKDIR"
-mpiexec -n 30 python mpiHelloWorld.py
+module load anaconda3/5.2.0
+source activate mpi4py
+module load gcc/5.3.0 cuda/9.2 openmpi/2.1.1/gnu/5.3.0
+mpirun python mpiHelloWorld.py
