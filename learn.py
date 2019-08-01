@@ -22,21 +22,21 @@ for i in range(len(epochs)):
     for j in range(len(lr)):
         for k in range(len(ld)):
             for l in range(len(nb)):
-                for m in range(len(nodes)):
-                    sets.append((epochs[i],lr[j],ld[k],nb[l],nodes[m]))
+                sets.append((epochs[i],lr[j],ld[k],nb[l]))
 
 
 
 
 
 class Learner:
-    def __init__(self,index,numFeatures,numLayers):
-        self.epochs,self.learning_rate,self.learning_decay,self.num_boards,self.num_nodes = sets[index]
+    def __init__(self,index,numFeatures):
+        self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
+        self.num_nodes = 2
         self.model = keras.Sequential()
         self.num_features = numFeatures
-        if numLayers == 1:
+        if self.num_features == 4:
             self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False))
-        elif numLayers == 2:
+        elif self.num_features == 8:
             self.model.add(Dense(self.num_nodes,input_dim=self.num_features,activation='relu'))
             self.model.add(Dense(1,activation='linear',use_bias=False))
         else:
@@ -45,7 +45,7 @@ class Learner:
         self.opt = keras.optimizers.SGD(lr=self.learning_rate)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
-        self.totalBoards = 10000
+        self.totalBoards = 20000
 
     def playFunc(self,V):
         """Creates the correct feature vector and returns the predicted value from the model,
@@ -128,20 +128,13 @@ class Learner:
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
-        weights = []
-        w = self.model.get_weights()
-        weights.append(w[0].tolist())
-        weights.append(w[1].tolist())
-        weights.append(w[2].tolist())
+        weights = self.getWeightArray()
         initialTest = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
         wf.write(str(weights)+"\n")
         for i in range(math.ceil(self.totalBoards/self.num_boards)):
             x,y = numpy.zeros((self.num_boards**2,self.num_features)),numpy.zeros((self.num_boards**2))
-            w = self.model.get_weights()
-            weights.append(w[0].tolist())
-            weights.append(w[1].tolist())
-            weights.append(w[2].tolist())
+            weights = self.getWeightArray()
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
@@ -189,3 +182,13 @@ class Learner:
                     Y[count] = result
                     count += 1
         return (X[:count],Y[:count])
+    def getWeightArray(self):
+        if self.num_features == 8:
+            weights = []
+            w = self.model.get_weights()
+            weights.append(w[0].tolist())
+            weights.append(w[1].tolist())
+            weights.append(w[2].tolist())
+            return weights
+        elif self.num_features == 4:
+            return self.model.get_weights()[0].tolist()

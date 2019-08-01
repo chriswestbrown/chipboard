@@ -31,6 +31,8 @@ public:
   void printString();
   int dim() { return n; }
   void setWeights(object w, int nf, int nn);
+  object weights;
+  int num_features, num_nodes;
 
 private:
   int w1, w2, w3, w4, w5;
@@ -43,8 +45,6 @@ private:
   std::vector<int> bottomRVals;
   std::vector<int> bottomCVals;
   int boardType;
-  object weights;
-  int num_features, num_nodes;
 };
 
 /** int n for size,int k for num chips, double p for probability, int bt for board type
@@ -460,104 +460,6 @@ int* getMoreFeatures(Board B, int r, int c, int r2, int c2){
   return returnArr;
 
 }
-
- double m(Board &B, int r, int c, int r2, int c2, object weights, int num_features, int num_nodes){
-
-  int * features = getMoreFeatures(B,r,c,r2,c2);
-  int sums[num_nodes];
-  double returnVal = 0;
-  for(int i=0; i<num_features; i++){
-    for(int j=0; j<num_nodes; j++){
-      sums[j] += extract<double>(weights[0][i][j])*features[i];
-    }
-  }
-  for(int i=0; i<num_nodes; i++){
-    sums[i] += extract<double>(weights[1][i]);
-    returnVal += std::max(0,sums[i])*extract<double>(weights[2][i][0]);
-  }
-  return returnVal;
-}
-
-
-int modelPlay(Board B, object weights, int num_features, int num_nodes) // note: copy!
-{
-  int N = B.dim(), s = 0;
-  while((s = B.score()) < 0)
-  {
-    std::vector<int> V;
-    for(int i = 0; i < N; ++i)
-      for(int j = 0; j < N; ++j)
-	        if (B.color(i,j))
-	           V.push_back(N*i + j);
-
-    int bestk = 0;
-    for(int k = 1; k < V.size(); k++)
-    {
-      int k1 = V[bestk]/N, k2 = V[bestk]%N;
-      int i = V[k]/N, j = V[k] % N;
-      if (m(B,k1,k2,i,j,weights,num_features,num_nodes)>0) {
-  //      std::cout<<"We called m here\n";
-        bestk = k; }
-
-    }
-    B.choose(V[bestk]/N,V[bestk] % N);
-  }
-//  B.print();
-  return s;
-}
-
-Board modelPlaySteps(Board B, object weights, int num_features, int num_nodes, int steps ) // note: copy!
-{
-  int N = B.dim(), s = 0;
-  while((s = B.score()) < 0 && steps>0)
-  {
-    std::vector<int> V;
-    for(int i = 0; i < N; ++i)
-      for(int j = 0; j < N; ++j)
-	        if (B.color(i,j))
-	           V.push_back(N*i + j);
-    int bestk = 0;
-    for(int k = 1; k < V.size(); k++)
-    {
-      int k1 = V[bestk]/N, k2 = V[bestk]%N;
-      int i = V[k]/N, j = V[k] % N;
-      if (m(B,k1,k2,i,j,weights,num_features,num_nodes)>0) {
-      //  std::cout<<"We called m here\n";
-        bestk = k; }
-
-    }
-    B.choose(V[bestk]/N,V[bestk] % N);
-    steps--;
-  }
-  // B.print();
-  return B;
-}
-
-std::pair<int,int> play(Board B,int i, int j, object weights, int num_features, int num_nodes){
-  B.choose(i,j);
-  int score=modelPlay(B,weights,num_features,num_nodes);
-  return std::pair<int,int>(i*B.dim()+j, score);
-}
-
-std::vector<std::pair<int,int>> getMovesWithValues(Board B, object weights, int num_features, int num_nodes) // note: copy!
-{
-  std::vector<std::pair<int,int>> movesWithVals;
-  int N = B.dim(), s = 0;
-    for(int i = 0; i < N; ++i)
-      for(int j = 0; j < N; ++j) {
-        if (B.color(i,j)) {
-          movesWithVals.push_back(play(B,i,j,weights,num_features,num_nodes));
-        }
-      }
-  return movesWithVals;
-}
-
-void printVector(std::vector<std::pair<int,int>> a, int n) {
-  for (int i=0;i<a.size();i++) {
-    std::cout<<"("<<a[i].first/n<<","<<a[i].first%n<<") has playout value of " <<a[i].second <<"\n";
-  }
-}
-
 int* getFeatures(Board B, int r, int c, int r2, int c2){
   int totalChips1 = 0, totalRed1 = 0;
   int totalChips2 = 0, totalRed2 = 0;
@@ -584,6 +486,112 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
   return returnArr;
 
 }
+
+ double m(Board &B, int r, int c, int r2, int c2){
+  double returnVal = 0;
+  if(B.num_features == 4){
+    int * features = getFeatures(B,r,c,r2,c2);
+    for(int i=0; i<B.num_features; i++){
+      returnVal += extract<double>(B.weights[i][0])*features[i];
+    }
+  }
+  else if(B.num_features == 8){
+    int * features = getMoreFeatures(B,r,c,r2,c2);
+    int sums[B.num_nodes];
+    for(int i=0; i<B.num_features; i++){
+      for(int j=0; j<B.num_nodes; j++){
+        sums[j] += extract<double>(B.weights[0][i][j])*features[i];
+      }
+    }
+    for(int i=0; i<B.num_nodes; i++){
+      sums[i] += extract<double>(B.weights[1][i]);
+      returnVal += std::max(0,sums[i])*extract<double>(B.weights[2][i][0]);
+    }
+  }
+  return returnVal;
+}
+
+
+int modelPlay(Board B) // note: copy!
+{
+  int N = B.dim(), s = 0;
+  while((s = B.score()) < 0)
+  {
+    std::vector<int> V;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j)
+	        if (B.color(i,j))
+	           V.push_back(N*i + j);
+
+    int bestk = 0;
+    for(int k = 1; k < V.size(); k++)
+    {
+      int k1 = V[bestk]/N, k2 = V[bestk]%N;
+      int i = V[k]/N, j = V[k] % N;
+      if (m(B,k1,k2,i,j)>0) {
+  //      std::cout<<"We called m here\n";
+        bestk = k; }
+
+    }
+    B.choose(V[bestk]/N,V[bestk] % N);
+  }
+//  B.print();
+  return s;
+}
+
+Board modelPlaySteps(Board B, int steps ) // note: copy!
+{
+  int N = B.dim(), s = 0;
+  while((s = B.score()) < 0 && steps>0)
+  {
+    std::vector<int> V;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j)
+	        if (B.color(i,j))
+	           V.push_back(N*i + j);
+    int bestk = 0;
+    for(int k = 1; k < V.size(); k++)
+    {
+      int k1 = V[bestk]/N, k2 = V[bestk]%N;
+      int i = V[k]/N, j = V[k] % N;
+      if (m(B,k1,k2,i,j)>0) {
+      //  std::cout<<"We called m here\n";
+        bestk = k; }
+
+    }
+    B.choose(V[bestk]/N,V[bestk] % N);
+    steps--;
+  }
+  // B.print();
+  return B;
+}
+
+std::pair<int,int> play(Board B,int i, int j){
+  B.choose(i,j);
+  int score=modelPlay(B);
+  return std::pair<int,int>(i*B.dim()+j, score);
+}
+
+std::vector<std::pair<int,int>> getMovesWithValues(Board B) // note: copy!
+{
+  std::vector<std::pair<int,int>> movesWithVals;
+  int N = B.dim(), s = 0;
+    for(int i = 0; i < N; ++i)
+      for(int j = 0; j < N; ++j) {
+        if (B.color(i,j)) {
+          movesWithVals.push_back(play(B,i,j));
+        }
+      }
+  return movesWithVals;
+}
+
+void printVector(std::vector<std::pair<int,int>> a, int n) {
+  for (int i=0;i<a.size();i++) {
+    std::cout<<"("<<a[i].first/n<<","<<a[i].first%n<<") has playout value of " <<a[i].second <<"\n";
+  }
+}
+
+
 
 /**
 void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
@@ -626,16 +634,22 @@ void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
 class ChipboardBoost
 {
   public:
-    void generateDataOneRun(Board &B, object x, object y, int &count, int randInit,
-      int randRange, object weights, int num_features, int num_nodes){
+    void generateDataOneRun(Board &B, object x, object y, int &count, int randInit, int randRange){
         int steps = randInit + rand()%randRange;
-        B = modelPlaySteps(B, weights, num_features, num_nodes, steps);
-        std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,weights, num_features, num_nodes);
+        B = modelPlaySteps(B,steps);
+        std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B);
         for(int j=0;j<movesWithVals.size();j++) {
           for(int k=j+1;k<movesWithVals.size();k++) {
             if(movesWithVals[j].second != movesWithVals[k].second) {
-              int*features = getMoreFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
-                movesWithVals[k].first/6, movesWithVals[k].first%6);
+              int*features;
+              if(B.num_features == 4){
+                features = getFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+                 movesWithVals[k].first/6, movesWithVals[k].first%6);
+              }
+              else if(B.num_features == 8){
+                getMoreFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+                 movesWithVals[k].first/6, movesWithVals[k].first%6);
+              }
                 for(int l=0; l<4; l++)
                 x[count][l] = features[l];
                 y[count] = movesWithVals[j].second - movesWithVals[k].second;
@@ -651,7 +665,8 @@ class ChipboardBoost
             int count = 0;
             for(int i=0;i<numBoards;i++) {
               Board B(6,140,.4,boardType);
-              generateDataOneRun(B, x, y, count, randInit, randRange, weights, num_features, num_nodes);
+              B.setWeights(weights,num_features,num_nodes);
+              generateDataOneRun(B, x, y, count, randInit, randRange);
             }
             return count;
 
@@ -661,7 +676,8 @@ class ChipboardBoost
           int score = 0;
           for(int i=0; i<num; i++){
             Board B(6,140,.4,boardType);
-            score += modelPlay(B, weights, num_features, num_nodes);
+            B.setWeights(weights,num_features,num_nodes);
+            score += modelPlay(B);
           }
           double avgScore = (1.0*score)/num;
           return avgScore;
