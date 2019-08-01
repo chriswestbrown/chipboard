@@ -124,8 +124,6 @@ class Learner:
         if weightFile != "stdout":
             wf = open(weightFile,"w")
 
-
-        print(self.num_boards)
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
