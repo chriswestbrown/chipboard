@@ -20,3 +20,4 @@ l.totalBoards=10;
 l.num_boards=10;
 l.learnThingsCPP(kind=0, file=f, weightFile=wf)
 print("--- %s seconds ---" % (time.time() - start_time))
+sys.exit(0)
