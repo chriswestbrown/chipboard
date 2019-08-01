@@ -321,7 +321,6 @@ bool isStrander(Board B, int r, int c, int r0, int c0) {
   {
     int rp = r + dr[i], cp = c + dc[i];
     if (in(rp,cp,B.dim()) && B.color(rp,cp)) {
-        if(B.height(r,c)==1) {numRed--;}
         r1 = rp;
         r2 = cp;
         numRed++;
