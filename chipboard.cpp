@@ -682,6 +682,16 @@ class ChipboardBoost
           double avgScore = (1.0*score)/num;
           return avgScore;
         }
+        double testGreedy(int num, float rand_seed,int boardType){
+          srand(int(double(rand_seed)*UINT_MAX));
+          int score = 0;
+          for(int i=0; i<num; i++){
+            Board B(6,140,.4,boardType);
+            score += greedyplay(B);
+          }
+          double avgScore = (1.0*score)/num;
+          return avgScore;
+        }
 
 };
 
@@ -689,7 +699,8 @@ BOOST_PYTHON_MODULE(chipboard)
 {
   class_<ChipboardBoost>("ChipboardBoost", init<>())
     .def("generateData", &ChipboardBoost::generateData)
-    .def("testKnowledge",&ChipboardBoost::testKnowledge);
+    .def("testKnowledge",&ChipboardBoost::testKnowledge)
+    .def("testGreedy",&ChipboardBoost::testGreedy);
 
 }
 
