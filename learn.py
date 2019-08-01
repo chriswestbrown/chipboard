@@ -45,7 +45,7 @@ class Learner:
         self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
-        self.totalBoards = 20000
+        self.total_boards = 20000
 
     def playFunc(self,V):
         """Creates the correct feature vector and returns the predicted value from the model,
@@ -90,7 +90,7 @@ class Learner:
         lr_delta: How much to decrease the learning rate by after each iteration
         size: Number of unique boards to consider when generating data
         kind: Board type to create (0,1,2)"""
-        for i in range(math.ceil(self.totalBoards/self.num_boards)):
+        for i in range(math.ceil(self.total_boards/self.num_boards)):
             # print("Starting round " + str(i))
             x,y = self.generateData(self.num_boards,kind,numpy.zeros((size**2,4)),numpy.zeros((size**2)),rand_init,rand_range)
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
@@ -131,7 +131,7 @@ class Learner:
         initialTest = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
         wf.write(str(weights)+"\n")
-        for i in range(math.ceil(self.totalBoards/self.num_boards)):
+        for i in range(math.ceil(self.total_boards/self.num_boards)):
             x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
