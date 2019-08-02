@@ -9,6 +9,7 @@ import fileinput
 import chipboard
 import sys
 import math
+import time
 
 epochs = [10,1,5,20,50]
 lr = [0.001,0.00001,0.01,0.005,0.0001]
@@ -124,6 +125,8 @@ class Learner:
         if weightFile != "stdout":
             wf = open(weightFile,"w")
 
+        timeData = open(weightFile+".time", 'w')
+
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
@@ -136,9 +139,13 @@ class Learner:
         for i in range(math.ceil(self.total_boards/self.num_boards)):
             x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
+            start_time = time.time()
+            timeData.write("Start time is: " + str(start_time)+"\n")
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
+            timeData.write("Done Generating Data. Time since startTime: " + str(time.time()-start_time)+"\n")
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
+            timeData.write("Done Model Fitting. Time since startTime: " + str(time.time()-start_time)+"\n")
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
                 avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
@@ -152,6 +159,7 @@ class Learner:
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         f.close()
         wf.close()
+        timeData.close()
 
     def testKnowledgeCPP(self,num=1000,boardType=2):
         weights = self.model.get_weights()
