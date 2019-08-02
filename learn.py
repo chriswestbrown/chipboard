@@ -120,9 +120,9 @@ class Learner:
         wf = sys.stdout
         f = sys.stdout
         if file != "stdout":
-            f = open(file,"w")
+            f = open(file,"w",buffering=0)
         if weightFile != "stdout":
-            wf = open(weightFile,"w")
+            wf = open(weightFile,"w",buffering=0)
 
         boardsPlayed = 0
         boards_until_test = test_inc
@@ -146,7 +146,9 @@ class Learner:
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
-        # f.close()
+        f.close()
+        wf.close()
+
     def testKnowledgeCPP(self,num=1000,boardType=2):
         weights = self.model.get_weights()
         self.chip.testKnowledge(num,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),boardType)
