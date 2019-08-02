@@ -120,9 +120,9 @@ class Learner:
         wf = sys.stdout
         f = sys.stdout
         if file != "stdout":
-            f = open(file,"w",buffering=0)
+            f = open(file,"w")
         if weightFile != "stdout":
-            wf = open(weightFile,"w",buffering=0)
+            wf = open(weightFile,"w")
 
         boardsPlayed = 0
         boards_until_test = test_inc
@@ -131,6 +131,8 @@ class Learner:
         initialTest = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
         wf.write(str(weights)+"\n")
+        f.flush()
+        wf.flush()
         for i in range(math.ceil(self.total_boards/self.num_boards)):
             x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
@@ -142,6 +144,8 @@ class Learner:
                 avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
                 f.write("("+str(boardsPlayed)+","+str(avgScore)+"), ")
                 wf.write(str(weights)+"\n")
+                f.flush()
+                wf.flush()
                 boards_until_test += test_inc
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
