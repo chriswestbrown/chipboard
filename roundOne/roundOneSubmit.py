@@ -2,22 +2,26 @@
 #4Feature
 
 import sys
+import re
 from learn import Learner
 from mpi4py import MPI
 import time
 
-
 start_time = time.time()
 rank = MPI.COMM_WORLD.Get_rank()
-
-if rank>624: 
+size = MPI.COMM_WORLD.Get_size()
+name = MPI.Get_processor_name()
+nodeNum = int(sys.argv[2])-1
+seed = 80*nodeNum+rank
+if seed>624: 
  sys.exit(0)
-f =  "r" + sys.argv[1] + str(rank) + ".txt"
-wf =  "w" + sys.argv[1] + str(rank) + ".txt"
 
-l = Learner(rank, 4);
-l.totalBoards=10;
-l.num_boards=10;
-l.learnThingsCPP(kind=0, file=f, weightFile=wf)
-print("--- %s seconds ---" % (time.time() - start_time))
+f =   sys.argv[1] + "_r_" + str(nodeNum)+ "_" + str(rank)+ ".txt"
+wf =  sys.argv[1] + "_w_" + str(nodeNum) + "_"+ str(rank) + ".txt"
+t = sys.argv[1] + "_t_" + str(nodeNum) + "_" + str(rank) + ".txt"
+l = Learner(seed, 4)
+learnThingsCPP(kind=0, file=f, weightFile=wf)
+a = open(t, 'w')
+a.write(str(time.time() - start_time))
+a.close()
 sys.exit(0)
