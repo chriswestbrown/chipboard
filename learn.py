@@ -144,7 +144,7 @@ class Learner:
                 wf.write(str(weights)+"\n")
                 boards_until_test += test_inc
             self.learning_rate *= self.learning_decay
-            self.opt = keras.optimizers.SGD(lr=self.learning_rate)
+            self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         # f.close()
     def testKnowledgeCPP(self,num=1000,boardType=2):
