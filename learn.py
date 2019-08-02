@@ -140,12 +140,12 @@ class Learner:
             x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
             start_time = time.time()
-            timeData.write("Start time is: " + str(start_time))
+            timeData.write("Start time is: " + str(start_time)+"\n")
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
-            timeData.write("Done Generating Data. Time since startTime: " + str(time.time()-start_time))
+            timeData.write("Done Generating Data. Time since startTime: " + str(time.time()-start_time)+"\n")
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
-            timeData.write("Done Model Fitting. Time since startTime: " + str(time.time()-start_time))
+            timeData.write("Done Model Fitting. Time since startTime: " + str(time.time()-start_time)+"\n")
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
                 avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
