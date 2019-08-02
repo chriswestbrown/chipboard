@@ -1,0 +1,1796 @@
+--------------------------------------------------------------------------
+WARNING: There are more than one active ports on host 'cr2cn15', but the
+default subnet GID prefix was detected on more than one of these
+ports.  If these ports are connected to different physical IB
+networks, this configuration will fail in Open MPI.  This version of
+Open MPI requires that every physically separate IB subnet that is
+used between connected MPI processes must have different subnet ID
+values.
+
+Please see this FAQ entry for more details:
+
+  http://www.open-mpi.org/faq/?category=openfabrics#ofa-default-subnet-gid
+
+NOTE: You can turn off this warning by setting the MCA parameter
+      btl_openib_warn_default_gid_prefix to 0.
+--------------------------------------------------------------------------
+2019-08-02 10:30:36.937768: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.116783: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.635622: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.695718: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:37.701786: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.710074: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.720958: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.771787: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.837218: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.950160: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:37.966753: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.020221: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.053845: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.058472: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.082426: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.103721: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.116282: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.152042: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.156693: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.166772: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.180477: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.373368: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.405740: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.440359: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.451101: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.461892: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.470771: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.496943: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.503011: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.515345: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.540628: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.545976: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.554770: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.573245: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.573633: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.589548: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.619291: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.650807: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.656445: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.671824: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.686254: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.695600: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.704945: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.753012: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.768226: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.774470: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.789636: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.797210: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.809442: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.812294: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.815793: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.830573: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.840497: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.845404: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.855889: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.860391: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.863126: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.889284: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.896039: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.903614: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.908361: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.910559: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.914400: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.918126: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.919358: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.927705: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.937841: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.940769: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.944672: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.945259: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.946832: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.948708: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.951583: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.951739: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.954181: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.956789: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.957984: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:38.958059: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2019-08-02 10:30:38.961018: E tensorflow/core/common_runtime/direct_session.cc:158] Internal: failed initializing StreamExecutor for CUDA device ordinal 0: Internal: failed call to cuDevicePrimaryCtxRetain: CUDA_ERROR_INVALID_DEVICE
+/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+Traceback (most recent call last):
+  File "roundOneSubmit.py", line 23, in <module>
+    l.learnThingsCPP(kind=0, file=f, weightFile=wf)
+  File "/gpfs/home/m201560/chipboard/learn.py", line 130, in learnThingsCPP
+    weights = self.getWeightArray()
+  File "/gpfs/home/m201560/chipboard/learn.py", line 199, in getWeightArray
+    return self.model.get_weights()[0].tolist()
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/engine/network.py", line 492, in get_weights
+    return K.batch_get_value(weights)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2420, in batch_get_value
+    return get_session().run(ops)
+  File "/gpfs/home/m201560/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 186, in get_session
+    _SESSION = tf.Session(config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1563, in __init__
+    super(Session, self).__init__(target, graph, config=config)
+  File "/gpfs/pkgs/mhpcc/anaconda3-5.0.1/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 633, in __init__
+    self._session = tf_session.TF_NewSession(self._graph._c_graph, opts)
+tensorflow.python.framework.errors_impl.InternalError: Failed to create session.
+2019-08-02 10:30:39.015027: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0002:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-02 10:30:39.127736: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 1 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0003:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-02 10:30:39.261381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 2 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0006:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-02 10:30:39.420736: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 3 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0007:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-02 10:30:39.421424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0, 1, 2, 3
+[cr2cn15:46502] 79 more processes have sent help message help-mpi-btl-openib.txt / default subnet prefix
+[cr2cn15:46502] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+2019-08-02 10:30:42.686072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-02 10:30:42.686112: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 1 2 3 
+2019-08-02 10:30:42.686124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N Y N N 
+2019-08-02 10:30:42.686133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y N N N 
+2019-08-02 10:30:42.686141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 2:   N N N Y 
+2019-08-02 10:30:42.686150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 3:   N N Y N 
+2019-08-02 10:30:42.686927: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15163 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0002:01:00.0, compute capability: 6.0)
+2019-08-02 10:30:42.838482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 15163 MB memory) -> physical GPU (device: 1, name: Tesla P100-SXM2-16GB, pci bus id: 0003:01:00.0, compute capability: 6.0)
+2019-08-02 10:30:42.965962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:2 with 15163 MB memory) -> physical GPU (device: 2, name: Tesla P100-SXM2-16GB, pci bus id: 0006:01:00.0, compute capability: 6.0)
+2019-08-02 10:30:43.091655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:3 with 15163 MB memory) -> physical GPU (device: 3, name: Tesla P100-SXM2-16GB, pci bus id: 0007:01:00.0, compute capability: 6.0)
+=>> PBS: job killed: walltime 1821 exceeded limit 1800
+[warn] Epoll ADD(4) on fd 351 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 294 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 313 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 298 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 372 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 286 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 421 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 328 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 322 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 293 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 301 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
+[warn] Epoll ADD(4) on fd 358 failed.  Old events were 0; read change was 0 (none); write change was 1 (add): Bad file descriptor
