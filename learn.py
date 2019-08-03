@@ -149,7 +149,7 @@ class Learner:
             timeData.write(str(round(generateDataTime,2))+" ")
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
-            modelTime = time.time()-generateDataTime
+            modelTime = time.time()-generateDataTime-start_time
             modelTimeTotal = modelTimeTotal + modelTime
             timeCounter = timeCounter + 1
             timeData.write(str(round(modelTime,2))+"\n")
