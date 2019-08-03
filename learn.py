@@ -125,12 +125,15 @@ class Learner:
         if weightFile != "stdout":
             wf = open(weightFile,"w")
 
-        timeData = open(weightFile+".time", 'w')
-
+        timeData = open(file+".time", 'w')
+        timeData.write("epochs " + str(self.epochs)+ ", learningRate " + str(self.learning_rate) + ", learningDecay" + str(self.learning_decay) + ", numBoardsPerRound" + str(self.num_boards) +"\n")
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
         weights = self.getWeightArray()
+        genTimeTotal=0
+        modelTimeTotal=0
+        timeCounter=0
         initialTest = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
         f.write("("+str(boardsPlayed)+","+str(initialTest)+"), ")
         wf.write(str(weights)+"\n")
@@ -140,12 +143,16 @@ class Learner:
             x,y = numpy.zeros((self.num_boards*630,self.num_features)),numpy.zeros((self.num_boards*630))
             weights = self.getWeightArray()
             start_time = time.time()
-            timeData.write("Start time is: " + str(start_time)+"\n")
             count = self.chip.generateData(self.num_boards,kind,x,y,rand_init,rand_range,weights,self.num_features,self.num_nodes,random.random())
-            timeData.write("Done Generating Data. Time since startTime: " + str(time.time()-start_time)+"\n")
+            generateDataTime = time.time() - start_time
+            genTimeTotal = genTimeTotal + generateDataTime
+            timeData.write(str(round(generateDataTime,2))+" ")
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
-            timeData.write("Done Model Fitting. Time since startTime: " + str(time.time()-start_time)+"\n")
+            modelTime = time.time()-generateDataTime
+            modelTimeTotal = modelTimeTotal + modelTime
+            timeCounter = timeCounter + 1
+            timeData.write(str(round(modelTime,2))+"\n")
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
                 avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
@@ -157,8 +164,12 @@ class Learner:
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
             self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
+        f.write("\n")
         f.close()
         wf.close()
+        avgModelTime = modelTimeTotal/timeCounter
+        avgGenerateTime = genTimeTotal/timeCounter
+        timeData.write("avgGenTime " + str(round(avgGenerateTime, 2)) + ", avgModelFitTime " + str(round(avgModelTime, 2)) + "\n")
         timeData.close()
 
     def testKnowledgeCPP(self,num=1000,boardType=2):
