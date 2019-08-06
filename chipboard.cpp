@@ -292,15 +292,15 @@ void humanplay(Board B)
 }
 
 bool isPotentialLinker(Board B, int r, int c, int r0, int c0) {
-  int numRed=5;
+  int numRed=0;
   int r1,r2;
   for(int i = 0; i <= 4; ++i)
   {
     int rp = r + dr[i], cp = c + dc[i];
-    if (in(rp,cp,B.dim()) || B.color(rp,cp)) {
+    if (in(rp,cp,B.dim()) && B.color(rp,cp)) {
         r1 = rp;
         r2 = cp;
-        numRed--;
+        numRed++;
       }
     }
     if(numRed==0) {
