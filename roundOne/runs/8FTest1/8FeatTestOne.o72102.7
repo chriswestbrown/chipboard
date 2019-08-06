@@ -1,0 +1,608 @@
+--------------------------------------------------------------------------
+WARNING: There are more than one active ports on host 'cr2cn09', but the
+default subnet GID prefix was detected on more than one of these
+ports.  If these ports are connected to different physical IB
+networks, this configuration will fail in Open MPI.  This version of
+Open MPI requires that every physically separate IB subnet that is
+used between connected MPI processes must have different subnet ID
+values.
+
+Please see this FAQ entry for more details:
+
+  http://www.open-mpi.org/faq/?category=openfabrics#ofa-default-subnet-gid
+
+NOTE: You can turn off this warning by setting the MCA parameter
+      btl_openib_warn_default_gid_prefix to 0.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[47623,1],26] (PID 96587)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+[cr2cn09:96537] 79 more processes have sent help message help-mpi-btl-openib.txt / default subnet prefix
+[cr2cn09:96537] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[cr2cn09:96537] 79 more processes have sent help message help-opal-runtime.txt / opal_init:warn-fork
+2019-08-05 18:05:11.768456: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:11.768501: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:11.768511: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:11.768557: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:11.768619: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:11.768629: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:11.790657: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:11.790701: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:11.790710: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:11.790753: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:11.790807: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:11.790816: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:11.816694: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:11.816734: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:11.816744: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:11.816785: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:11.816838: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:11.816847: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:11.974521: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:11.974570: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:11.974582: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:11.974631: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:11.974694: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:11.974704: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:11.997127: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:11.997170: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:11.997182: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:11.997225: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:11.997279: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:11.997288: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.046329: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.046379: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.046396: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.046468: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.046552: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.046565: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.059128: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.059190: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.059202: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.059255: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.059333: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.059344: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.149230: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.149280: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.149292: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.149342: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.149404: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.149414: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.195399: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.195439: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.195449: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.195491: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.195545: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.195554: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.236384: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.236443: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.236455: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.236507: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.236581: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.236592: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.277744: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.277787: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.277796: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.277838: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.277896: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.277905: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.292596: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.292635: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.292644: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.292684: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.292749: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.292757: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.305081: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.305133: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.305144: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.305198: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.305262: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.305273: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.446817: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.446868: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.446879: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.446814: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.446855: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.446865: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.446907: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.446929: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.446958: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.446967: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.446993: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.447004: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.466948: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.467008: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.467023: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.467080: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.467159: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.467171: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.484781: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.484839: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.484853: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.484785: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.484841: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.484853: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.484909: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.484912: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.484992: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.484998: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.485008: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.485006: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.490852: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.490939: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.490954: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.491021: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.491136: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.491151: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.503707: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.503760: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.503771: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.503825: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.503889: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.503900: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.682247: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.682304: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.682317: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.682377: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.682454: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.682467: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:12.900742: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:12.900792: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:12.900803: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:12.900861: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:12.900930: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:12.900941: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.141567: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.141629: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.141645: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.141716: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.141810: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.141826: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.243863: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.243914: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.243925: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.243988: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.244068: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.244080: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.259678: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.259793: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.259823: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.259886: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.259966: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.259979: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.267683: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.267724: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.267733: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.267775: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.267838: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.267850: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.288299: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.288353: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.288365: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.288416: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.288297: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.288350: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.288361: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.288413: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.288478: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.288489: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.288476: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.288487: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.302621: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.302708: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.302722: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.302786: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.302890: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.302904: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.317411: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.317465: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.317477: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.317530: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.317594: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.317604: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.326881: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.326945: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.326961: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.326881: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.326946: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.326961: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.327025: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.327025: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.327109: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.327124: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.327109: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.327124: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.344257: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.344323: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.344335: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.344394: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.344470: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.344481: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.371300: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.371352: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.371364: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.371415: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.371486: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.371496: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.389408: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.389479: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.389493: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.389553: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.389642: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.389655: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.396329: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.396387: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.396399: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.396452: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.396521: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.396531: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.419465: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.419521: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.419533: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.419587: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.419657: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.419668: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.419965: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.420032: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.420045: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.420103: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.420191: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.420204: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.428010: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.428079: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.428090: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.428145: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.428229: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.428239: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.432194: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.432280: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.432296: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.432366: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.432473: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.432488: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.437334: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.437396: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.437407: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.437462: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.437538: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.437549: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.446010: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.446088: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.446102: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.446165: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.446266: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.446280: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.454358: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.454453: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.454469: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.454537: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.454631: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.454645: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.460543: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.460611: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.460626: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.460692: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.460778: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.460791: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.465879: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.465960: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.465977: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.466048: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.466156: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.466172: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.468451: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.468529: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.468541: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.468604: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.468698: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.468709: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.476763: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.476835: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.476849: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.476909: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.477002: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.477014: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.482416: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.482492: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.482509: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.482576: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.482675: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.482690: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.486253: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.486369: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.486393: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.486488: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.486635: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.486660: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.487202: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.487273: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.487287: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.487346: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.487434: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.487446: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.491010: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.491094: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.491111: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.491180: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.491291: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.491307: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.492371: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.492444: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.492458: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.492518: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.492616: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.492629: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.495499: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.495605: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.495622: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.495702: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.495831: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.495850: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.499935: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.500019: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.500036: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.500105: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.500215: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.500231: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.509589: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.509668: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.509684: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.509752: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.509847: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.509860: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.513789: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.513882: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.513903: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.513985: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.514145: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.514164: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.516941: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.517001: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.517013: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.517066: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.517137: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.517147: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.520480: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.520586: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.520608: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.520695: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.520829: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.520852: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.523318: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.523430: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.523461: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.523570: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.523743: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.523770: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.530696: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.530800: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.530823: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.530915: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.531062: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.531084: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.532947: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.533018: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.533033: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.533100: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.533195: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.533210: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.535208: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.535272: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.535286: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.535348: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.535431: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.535445: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.535728: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.535809: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.535829: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.535907: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.536032: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.536050: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.536937: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.537034: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.537055: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.537138: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.537252: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.537271: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.538912: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.539001: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.539023: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.539114: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.539244: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.539267: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.544364: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.544440: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.544455: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.544525: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.544646: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.544667: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.545277: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.545350: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.545368: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.545445: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.545539: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.545552: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.548807: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.548919: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.548941: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.549037: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.549188: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.549212: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.550813: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.550925: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.550949: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.551039: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.551182: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.551204: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.551631: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.551716: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.551744: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.551836: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.551971: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.551999: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.552447: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.552535: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.552564: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.552664: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.552816: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.552845: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.554083: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.554196: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.554215: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.554296: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.554408: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.554427: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.555359: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.555444: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.555461: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.555537: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.555660: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.555677: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.558267: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.558382: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.558414: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.558531: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.558695: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.558727: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.559423: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.559508: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.559537: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.559639: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.559804: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.559833: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.561635: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2019-08-05 18:05:13.561748: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: cr2cn09
+2019-08-05 18:05:13.561775: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: cr2cn09
+2019-08-05 18:05:13.561899: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 418.67.0
+2019-08-05 18:05:13.562098: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 418.67.0
+2019-08-05 18:05:13.562134: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 418.67.0
+2019-08-05 18:05:13.909942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0007:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-05 18:05:13.910043: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2019-08-05 18:05:14.004141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0003:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-05 18:05:14.004226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2019-08-05 18:05:14.053211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0006:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-05 18:05:14.053305: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2019-08-05 18:05:14.059520: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0002:01:00.0
+totalMemory: 15.90GiB freeMemory: 15.64GiB
+2019-08-05 18:05:14.059614: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2019-08-05 18:05:14.817954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-05 18:05:14.818008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2019-08-05 18:05:14.818026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2019-08-05 18:05:14.818459: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15156 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0007:01:00.0, compute capability: 6.0)
+2019-08-05 18:05:14.964940: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-05 18:05:14.964994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2019-08-05 18:05:14.965012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2019-08-05 18:05:14.965382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15156 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0003:01:00.0, compute capability: 6.0)
+2019-08-05 18:05:15.035296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-05 18:05:15.035344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2019-08-05 18:05:15.035362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2019-08-05 18:05:15.035741: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15156 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0002:01:00.0, compute capability: 6.0)
+2019-08-05 18:05:15.213998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-05 18:05:15.214052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2019-08-05 18:05:15.214070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2019-08-05 18:05:15.214610: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15156 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0006:01:00.0, compute capability: 6.0)
+[cr2cn09:96572:0] Caught signal 11 (Segmentation fault)
+==== backtrace ====
+ 2 0x00000000000745c4 mxm_handle_error()  /var/tmp/OFED_topdir/BUILD/mxm-3.7.3111/src/mxm/util/debug/debug.c:641
+ 3 0x0000000000074d04 mxm_error_signal_handler()  /var/tmp/OFED_topdir/BUILD/mxm-3.7.3111/src/mxm/util/debug/debug.c:616
+ 4 0x0000000000000478 ??()  /gpfs/pkgs/mhpcc/anaconda3-5.2.0/bin/python3.6:0
+ 5 0x000000000003f1f0 _ZN5boost6python3api23object_initializer_implILb0ELb0EE3getIiEEP7_objectRKT_N4mpl_5bool_ILb0EEE()  ??:0
+ 6 0x000000000003d054 _ZN5boost6python3api23object_base_initializerIiEEP7_objectRKT_()  ??:0
+ 7 0x000000000003a828 _ZN5boost6python3api6objectC2IiEERKT_()  ??:0
+ 8 0x00000000000387bc _ZNK5boost6python3api5proxyINS1_13item_policiesEEaSIiEERKS4_RKT_()  ??:0
+ 9 0x0000000000035ee0 _ZN14ChipboardBoost18generateDataOneRunER5BoardN5boost6python3api6objectES5_Riii()  ??:0
+10 0x000000000003628c _ZN14ChipboardBoost12generateDataEiiN5boost6python3api6objectES3_iiS3_iif()  ??:0
+11 0x000000000004a9d4 _ZN5boost6python6detail6invokeINS0_15to_python_valueIRKiEEM14ChipboardBoostFiiiNS0_3api6objectES9_iiS9_iifENS0_15arg_from_pythonIRS7_EENSC_IiEESF_NSC_IS9_EESG_SF_SF_SG_SF_SF_NSC_IfEEEEP7_objectNS1_11invoke_tag_ILb0ELb1EEERKT_RT0_RT1_RT2_RT3_RT4_RT5_RT6_RT7_RT8_RT9_RT10_RT11_()  ??:0
+12 0x0000000000048fd0 _ZN5boost6python6detail12caller_arityILj11EE4implIM14ChipboardBoostFiiiNS0_3api6objectES7_iiS7_iifENS0_21default_call_policiesENS_3mpl8vector12IiRS5_iiS7_S7_iiS7_iifEEEclEP7_objectSH_()  ??:0
+13 0x0000000000047a04 _ZN5boost6python7objects23caller_py_function_implINS0_6detail6callerIM14ChipboardBoostFiiiNS0_3api6objectES7_iiS7_iifENS0_21default_call_policiesENS_3mpl8vector12IiRS5_iiS7_S7_iiS7_iifEEEEEclEP7_objectSI_()  ??:0
+14 0x00000000000290e4 _ZNK5boost6python7objects8function4callEP7_objectS4_()  ??:0
+15 0x0000000000029590 _ZN5boost6detail8function26void_function_ref_invoker0INS_6python7objects12_GLOBAL__N_111bind_returnEvE6invokeERNS1_15function_bufferE()  function.cpp:0
+16 0x0000000000035f68 _ZN5boost6python21handle_exception_implENS_9function0IvEE()  ??:0
+17 0x0000000000026f30 function_call()  function.cpp:0
+18 0x00000000000d1a1c _PyObject_FastCallDict()  ??:0
+19 0x00000000001b1c60 _PyObject_FastCallKeywords()  ??:0
+20 0x00000000001bb870 call_function()  :0
+21 0x00000000001f88d4 _PyEval_EvalFrameDefault()  ??:0
+22 0x00000000000ae9a4 PyEval_EvalFrameEx()  ??:0
+23 0x00000000001af9b8 _PyEval_EvalCodeWithName()  :0
+24 0x00000000001b1624 fast_function()  :0
+25 0x00000000001bb7ac call_function()  :0
+26 0x00000000001f99e8 _PyEval_EvalFrameDefault()  ??:0
+27 0x00000000000ae9a4 PyEval_EvalFrameEx()  ??:0
+28 0x00000000001b2704 PyEval_EvalCodeEx()  ??:0
+29 0x00000000001b425c PyEval_EvalCode()  ??:0
+30 0x00000000002b48c0 run_mod()  :0
+31 0x00000000002b4f58 PyRun_FileExFlags()  ??:0
+32 0x00000000002b5250 PyRun_SimpleFileExFlags()  ??:0
+33 0x00000000002b56c4 PyRun_AnyFileExFlags()  ??:0
+34 0x00000000002bc274 Py_Main()  ??:0
+35 0x0000000000086af0 main()  ??:0
+36 0x0000000000025200 generic_start_main.isra.0()  libc-start.c:0
+37 0x00000000000253f4 __libc_start_main()  ??:0
+===================
+[cr2cn09:96644:0] Caught signal 11 (Segmentation fault)
+==== backtrace ====
+ 2 0x00000000000745c4 mxm_handle_error()  /var/tmp/OFED_topdir/BUILD/mxm-3.7.3111/src/mxm/util/debug/debug.c:641
+ 3 0x0000000000074d04 mxm_error_signal_handler()  /var/tmp/OFED_topdir/BUILD/mxm-3.7.3111/src/mxm/util/debug/debug.c:616
+ 4 0x0000000000000478 ??()  /gpfs/pkgs/mhpcc/anaconda3-5.2.0/bin/python3.6:0
+ 5 0x000000000003f1f0 _ZN5boost6python3api23object_initializer_implILb0ELb0EE3getIiEEP7_objectRKT_N4mpl_5bool_ILb0EEE()  ??:0
+ 6 0x000000000003d054 _ZN5boost6python3api23object_base_initializerIiEEP7_objectRKT_()  ??:0
+ 7 0x000000000003a828 _ZN5boost6python3api6objectC2IiEERKT_()  ??:0
+ 8 0x00000000000387bc _ZNK5boost6python3api5proxyINS1_13item_policiesEEaSIiEERKS4_RKT_()  ??:0
+ 9 0x0000000000035ee0 _ZN14ChipboardBoost18generateDataOneRunER5BoardN5boost6python3api6objectES5_Riii()  ??:0
+10 0x000000000003628c _ZN14ChipboardBoost12generateDataEiiN5boost6python3api6objectES3_iiS3_iif()  ??:0
+11 0x000000000004a9d4 _ZN5boost6python6detail6invokeINS0_15to_python_valueIRKiEEM14ChipboardBoostFiiiNS0_3api6objectES9_iiS9_iifENS0_15arg_from_pythonIRS7_EENSC_IiEESF_NSC_IS9_EESG_SF_SF_SG_SF_SF_NSC_IfEEEEP7_objectNS1_11invoke_tag_ILb0ELb1EEERKT_RT0_RT1_RT2_RT3_RT4_RT5_RT6_RT7_RT8_RT9_RT10_RT11_()  ??:0
+12 0x0000000000048fd0 _ZN5boost6python6detail12caller_arityILj11EE4implIM14ChipboardBoostFiiiNS0_3api6objectES7_iiS7_iifENS0_21default_call_policiesENS_3mpl8vector12IiRS5_iiS7_S7_iiS7_iifEEEclEP7_objectSH_()  ??:0
+13 0x0000000000047a04 _ZN5boost6python7objects23caller_py_function_implINS0_6detail6callerIM14ChipboardBoostFiiiNS0_3api6objectES7_iiS7_iifENS0_21default_call_policiesENS_3mpl8vector12IiRS5_iiS7_S7_iiS7_iifEEEEEclEP7_objectSI_()  ??:0
+14 0x00000000000290e4 _ZNK5boost6python7objects8function4callEP7_objectS4_()  ??:0
+15 0x0000000000029590 _ZN5boost6detail8function26void_function_ref_invoker0INS_6python7objects12_GLOBAL__N_111bind_returnEvE6invokeERNS1_15function_bufferE()  function.cpp:0
+16 0x0000000000035f68 _ZN5boost6python21handle_exception_implENS_9function0IvEE()  ??:0
+17 0x0000000000026f30 function_call()  function.cpp:0
+18 0x00000000000d1a1c _PyObject_FastCallDict()  ??:0
+19 0x00000000001b1c60 _PyObject_FastCallKeywords()  ??:0
+20 0x00000000001bb870 call_function()  :0
+21 0x00000000001f88d4 _PyEval_EvalFrameDefault()  ??:0
+22 0x00000000000ae9a4 PyEval_EvalFrameEx()  ??:0
+23 0x00000000001af9b8 _PyEval_EvalCodeWithName()  :0
+24 0x00000000001b1624 fast_function()  :0
+25 0x00000000001bb7ac call_function()  :0
+26 0x00000000001f99e8 _PyEval_EvalFrameDefault()  ??:0
+27 0x00000000000ae9a4 PyEval_EvalFrameEx()  ??:0
+28 0x00000000001b2704 PyEval_EvalCodeEx()  ??:0
+29 0x00000000001b425c PyEval_EvalCode()  ??:0
+30 0x00000000002b48c0 run_mod()  :0
+31 0x00000000002b4f58 PyRun_FileExFlags()  ??:0
+32 0x00000000002b5250 PyRun_SimpleFileExFlags()  ??:0
+33 0x00000000002b56c4 PyRun_AnyFileExFlags()  ??:0
+34 0x00000000002bc274 Py_Main()  ??:0
+35 0x0000000000086af0 main()  ??:0
+36 0x0000000000025200 generic_start_main.isra.0()  libc-start.c:0
+37 0x00000000000253f4 __libc_start_main()  ??:0
+===================
+--------------------------------------------------------------------------
+mpirun noticed that process rank 72 with PID 0 on node cr2cn09 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

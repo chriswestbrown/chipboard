@@ -1,0 +1,9 @@
+epochs 5, learningRate 0.05, learningDecay0.7, numBoardsPerRound1600
+109.0 6.47
+182.04 12.5
+256.14 16.53
+235.56 15.07
+252.44 17.62
+253.07 18.72
+252.69 16.78
+avgGenTime 220.14, avgModelFitTime 14.81
