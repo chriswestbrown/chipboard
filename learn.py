@@ -31,22 +31,44 @@ for i in range(len(epochs)):
 
 class Learner:
     def __init__(self,index,numFeatures):
-        self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
         self.num_nodes = 2
         self.model = keras.Sequential()
         self.num_features = numFeatures
         if self.num_features == 4:
-            self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False))
+            epochs = [10,1,5,20,50]
+            lr = [0.001,0.05,0.01,0.005,0.0001]
+            ld = [0.8,0.9,0.7,0.6,0.5]
+            nb = [400,100,200,800,1600]
+            sets = []
+            for i in range(len(epochs)):
+                for j in range(len(lr)):
+                    for k in range(len(ld)):
+                        for l in range(len(nb)):
+                            sets.append((epochs[i],lr[j],ld[k],nb[l]))
+            self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
+            self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False,kernel_initializer='ones'))
+            self.total_boards = 10000
         elif self.num_features == 8:
-            self.model.add(Dense(self.num_nodes,input_dim=self.num_features,activation='relu'))
-            self.model.add(Dense(1,activation='linear',use_bias=False))
+            epochs = [10,1,5,20,50]
+            lr = [0.001,0.00001,0.01,0.005,0.0001]
+            ld = [0.8,0.9,0.7,0.6,0.5]
+            nb = [400,100,200,800,1600]
+            sets = []
+            for i in range(len(epochs)):
+                for j in range(len(lr)):
+                    for k in range(len(ld)):
+                        for l in range(len(nb)):
+                            sets.append((epochs[i],lr[j],ld[k],nb[l]))
+            self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
+            self.model.add(Dense(self.num_nodes,input_dim=self.num_features,activation='relu',kernel_initializer='ones',bias_initializer='ones'))
+            self.model.add(Dense(1,activation='linear',use_bias=False,kernel_initializer='ones'))
+            self.total_boards = 20000
         else:
             exit()
 
         self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
         self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
         self.player = LFPlay()
-        self.total_boards = 20000
 
     def playFunc(self,V):
         """Creates the correct feature vector and returns the predicted value from the model,
@@ -108,7 +130,7 @@ class Learner:
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
 
-    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=1000):
+    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=10000):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
