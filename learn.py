@@ -11,19 +11,6 @@ import sys
 import math
 import time
 
-def getParams(param=1):
-    epochs = [10,1,5,20,50]
-    lr = ([0.001,0.00001,0.01,0.005,0.0001] if param == 1 else [0.001,0.05,0.01,0.005,0.0001])
-    ld = [0.8,0.9,0.7,0.6,0.5]
-    nb = [400,100,200,800,1600]
-    sets = []
-    for i in range(len(epochs)):
-        for j in range(len(lr)):
-            for k in range(len(ld)):
-                for l in range(len(nb)):
-                    sets.append((epochs[i],lr[j],ld[k],nb[l]))
-    return sets
-
 class Learner:
     def __init__(self,index,numFeatures):
         self.num_nodes = 2
@@ -44,8 +31,8 @@ class Learner:
             self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False,kernel_initializer='ones'))
             self.total_boards = 10000
         elif self.num_features == 8:
-            epochs = [10,1,5,20,50]
-            lr = [0.001,0.00001,0.01,0.005,0.0001]
+            epochs = [20]
+            lr = [0.01,0.005]
             ld = [0.8,0.9,0.7,0.6,0.5]
             nb = [400,100,200,800,1600]
             sets = []
