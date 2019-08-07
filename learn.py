@@ -11,23 +11,18 @@ import sys
 import math
 import time
 
-epochs = [10,1,5,20,50]
-lr = [0.001,0.00001,0.01,0.005,0.0001]
-ld = [0.8,0.9,0.7,0.6,0.5]
-nb = [400,100,200,800,1600]
-nodes = [2,4,8,16,32]
-# rands = [(10,7)]
-
-sets = []
-for i in range(len(epochs)):
-    for j in range(len(lr)):
-        for k in range(len(ld)):
-            for l in range(len(nb)):
-                sets.append((epochs[i],lr[j],ld[k],nb[l]))
-
-
-
-
+def getParams(param=1):
+    epochs = [10,1,5,20,50]
+    lr = ([0.001,0.00001,0.01,0.005,0.0001] if param == 1 else [0.001,0.05,0.01,0.005,0.0001])
+    ld = [0.8,0.9,0.7,0.6,0.5]
+    nb = [400,100,200,800,1600]
+    sets = []
+    for i in range(len(epochs)):
+        for j in range(len(lr)):
+            for k in range(len(ld)):
+                for l in range(len(nb)):
+                    sets.append((epochs[i],lr[j],ld[k],nb[l]))
+    return sets
 
 class Learner:
     def __init__(self,index,numFeatures):
@@ -130,7 +125,7 @@ class Learner:
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
 
-    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=10000):
+    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=100):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
@@ -149,6 +144,7 @@ class Learner:
 
         timeData = open(file+".time", 'w')
         timeData.write("epochs " + str(self.epochs)+ ", learningRate " + str(self.learning_rate) + ", learningDecay" + str(self.learning_decay) + ", numBoardsPerRound" + str(self.num_boards) +"\n")
+        timeData.flush()
         boardsPlayed = 0
         boards_until_test = test_inc
         self.chip = chipboard.ChipboardBoost()
@@ -169,12 +165,14 @@ class Learner:
             generateDataTime = time.time() - start_time
             genTimeTotal = genTimeTotal + generateDataTime
             timeData.write(str(round(generateDataTime,2))+" ")
+            timeData.flush()
             x,y = x[:count],y[:count]
             self.model.fit(x,y,epochs=self.epochs,verbose=0)
             modelTime = time.time()-generateDataTime-start_time
             modelTimeTotal = modelTimeTotal + modelTime
             timeCounter = timeCounter + 1
             timeData.write(str(round(modelTime,2))+"\n")
+            timeData.flush()
             boardsPlayed += self.num_boards
             if boardsPlayed >= boards_until_test:
                 avgScore = self.chip.testKnowledge(testBoards,weights,self.num_features,self.num_nodes,random.random(),kind)
@@ -194,9 +192,10 @@ class Learner:
         timeData.write("avgGenTime " + str(round(avgGenerateTime, 2)) + ", avgModelFitTime " + str(round(avgModelTime, 2)) + "\n")
         timeData.close()
 
-    def testKnowledgeCPP(self,num=1000,boardType=2):
-        weights = self.model.get_weights()
-        self.chip.testKnowledge(num,weights[0][0][0].item(),weights[0][1][0].item(),weights[0][2][0].item(),weights[0][3][0].item(),weights[1][0].item(),random.random(),boardType)
+    def testKnowledgeCPP(self,num=10000,boardType=0):
+        self.chip = chipboard.ChipboardBoost()
+        weights = self.getWeightArray()
+        return self.chip.testKnowledge(num,weights,self.num_features,self.num_nodes,random.random(),boardType)
 
     def generateTestData(self,X,Y,rand_init,rand_range):
         """Creates a board, plays a semi-random number of steps on it, then stops to consider
