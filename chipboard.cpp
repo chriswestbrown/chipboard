@@ -456,7 +456,6 @@ int* getMoreFeatures(Board B, int r, int c, int r2, int c2){
   returnArr[6] =  numStranders2;
   returnArr[7] = numLinkers2;
 
-  // std::cout<<endl;
   return returnArr;
 
 }
@@ -489,15 +488,16 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
 
  double m(Board &B, int r, int c, int r2, int c2){
   double returnVal = 0;
+  int * features;
   if(B.num_features == 4){
-    int * features = getFeatures(B,r,c,r2,c2);
+    features = getFeatures(B,r,c,r2,c2);
     for(int i=0; i<B.num_features; i++){
       returnVal += extract<double>(B.weights[i][0])*features[i];
     }
   }
   else if(B.num_features == 8){
-    int * features = getMoreFeatures(B,r,c,r2,c2);
-    int sums[B.num_nodes];
+    features = getMoreFeatures(B,r,c,r2,c2);
+    double sums[B.num_nodes] = {0.0};
     for(int i=0; i<B.num_features; i++){
       for(int j=0; j<B.num_nodes; j++){
         sums[j] += extract<double>(B.weights[0][i][j])*features[i];
@@ -505,9 +505,10 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
     }
     for(int i=0; i<B.num_nodes; i++){
       sums[i] += extract<double>(B.weights[1][i]);
-      returnVal += std::max(0,sums[i])*extract<double>(B.weights[2][i][0]);
+      returnVal += std::max(0.0,sums[i])*extract<double>(B.weights[2][i][0]);
     }
   }
+  delete[] features;
   return returnVal;
 }
 
@@ -529,7 +530,6 @@ int modelPlay(Board B) // note: copy!
       int k1 = V[bestk]/N, k2 = V[bestk]%N;
       int i = V[k]/N, j = V[k] % N;
       if (m(B,k1,k2,i,j)>0) {
-  //      std::cout<<"We called m here\n";
         bestk = k; }
 
     }
@@ -647,13 +647,14 @@ class ChipboardBoost
                  movesWithVals[k].first/6, movesWithVals[k].first%6);
               }
               else if(B.num_features == 8){
-                getMoreFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
+                features = getMoreFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
                  movesWithVals[k].first/6, movesWithVals[k].first%6);
               }
-                for(int l=0; l<4; l++)
+                for(int l=0; l<B.num_features; l++)
                 x[count][l] = features[l];
                 y[count] = movesWithVals[j].second - movesWithVals[k].second;
                 count++;
+                delete[] features;
               }
             }
           }
