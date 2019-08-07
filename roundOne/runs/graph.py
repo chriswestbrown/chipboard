@@ -2,6 +2,18 @@ from matplotlib import pyplot as plt
 import fileinput
 import sys
 
+def getParams(param=1):
+    epochs = [10,1,5,20,50]
+    lr = ([0.001,0.00001,0.01,0.005,0.0001] if param == 1 else [0.001,0.05,0.01,0.005,0.0001])
+    ld = [0.8,0.9,0.7,0.6,0.5]
+    nb = [400,100,200,800,1600]
+    sets = []
+    for i in range(len(epochs)):
+        for j in range(len(lr)):
+            for k in range(len(ld)):
+                for l in range(len(nb)):
+                    sets.append((epochs[i],lr[j],ld[k],nb[l]))
+    return sets
 
 class Data:
     def __init__(self,format,features=4,param=1):
