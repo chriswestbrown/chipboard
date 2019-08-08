@@ -1,6 +1,7 @@
 from keras.layers import Dense
 import keras
 import numpy
+import graphtest
 
 #   Creates the arrays necessary for graphtest.generateGraph() based on a keras
 #   model passed in as input.
@@ -23,3 +24,10 @@ def makeArrays(model):
             #for the last node
             bias.append([0.0])
     return (weights,bias,functions)
+
+def getLayerSizes(model):
+    return map(lambda x: x.input_shape[1],model.layers) + [model.layers[-1].output_shape[1]]
+
+def getModelGraphString(model):
+    x = makeArrays(model)
+    return graphtest.generateGraph(getLayerSizes(model),x[0],x[1],x[2])
