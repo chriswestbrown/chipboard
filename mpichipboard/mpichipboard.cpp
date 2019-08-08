@@ -6,11 +6,11 @@
 #include <vector>
 #include <utility>
 #include <string>
-#include<boost/python.hpp>
+//#include<boost/python.hpp>
 #include<limits.h>
 
 using namespace std;
-using namespace boost::python;
+//using namespace boost::python;
 
 
 class Board
@@ -30,12 +30,11 @@ public:
   void print();
   void printString();
   int dim() { return n; }
-  void setWeights(object w, int nf, int nn);
-  object weights;
+  void setWeights(double* w, int nf, int numWeights);
+  double* weights;
   int num_features, num_nodes;
 
 private:
-  int w1, w2, w3, w4, w5;
   void pop(int r, int c);
   std::vector< std::vector< std::vector<int> > > B;
   double p;
@@ -74,10 +73,12 @@ Board::Board(int n, int kC, double p, int bt)
   int numToRemove = i-k; //number of chips to remove from the bottom
   removeExtraBottomLayer(numToRemove);
 }
-void Board::setWeights(object w, int nf, int nn){
-  this->weights = w;
+void Board::setWeights(double* w, int nf, int numWeights){
+  this->weights = new double[numWeights];
+  for(int i=0;i<numWeights;i++) {
+  this->weights[i] = w[i];
+}
   this->num_features = nf;
-  this->num_nodes = nn;
 }
 
 
@@ -492,9 +493,10 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
   if(B.num_features == 4){
     features = getFeatures(B,r,c,r2,c2);
     for(int i=0; i<B.num_features; i++){
-      returnVal += extract<double>(B.weights[i][0])*features[i];
+      returnVal += B.weights[i]*features[i];
     }
   }
+  /**
   else if(B.num_features == 8){
     features = getMoreFeatures(B,r,c,r2,c2);
     double sums[B.num_nodes] = {0.0};
@@ -508,6 +510,7 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
       returnVal += std::max(0.0,sums[i])*extract<double>(B.weights[2][i][0]);
     }
   }
+  */
   delete[] features;
   return returnVal;
 }
@@ -592,10 +595,10 @@ void printVector(std::vector<std::pair<int,int>> a, int n) {
 }
 
 
-
 /**
+
 void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
-  int randRange, double w1, double w2, double w3, double w4, double w5){
+  int randRange, double w1, double w2, double w3, double w4){
     int steps = randInit + rand()%randRange;
     B = modelPlaySteps(B, w1,w2,w3,w4,w5,randInit);
     std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B,w1,w2,w3,w4,w5);
@@ -631,14 +634,13 @@ void generateDataOneRun(Board &B, int x[][4], int *y, int &count, int randInit,
 */
 
 
-class ChipboardBoost
-{
-  public:
-    void generateDataOneRun(Board &B, object x, object y, int &count, int randInit, int randRange){
+
+    void generateDataOneRun(Board &B, int randInit, int randRange){
         int steps = randInit + rand()%randRange;
         B = modelPlaySteps(B,steps);
         std::vector<std::pair<int,int>> movesWithVals = getMovesWithValues(B);
         for(int j=0;j<movesWithVals.size();j++) {
+          fflush(stdout);
           for(int k=j+1;k<movesWithVals.size();k++) {
             if(movesWithVals[j].second != movesWithVals[k].second) {
               int*features;
@@ -650,16 +652,22 @@ class ChipboardBoost
                 features = getMoreFeatures(B, movesWithVals[j].first/6, movesWithVals[j].first%6,
                  movesWithVals[k].first/6, movesWithVals[k].first%6);
               }
-                for(int l=0; l<B.num_features; l++)
-                x[count][l] = features[l];
-                y[count] = movesWithVals[j].second - movesWithVals[k].second;
-                count++;
+              for(int l=0; l<B.num_features; l++) {
+                  if(l==B.num_features-1) {
+                      std::cout<< features[l] << ":";
+                  } else {
+                  std::cout<< features[l] << ",";
+                }
+              }
+                std::cout<<movesWithVals[j].second - movesWithVals[k].second<<endl;
                 delete[] features;
               }
             }
           }
+          delete[] B.weights;
         }
 
+/**
         int generateData(int numBoards, int boardType, object x, object y, int randInit,
           int randRange, object weights, int num_features, int num_nodes, float rand_seed){
             srand(int(double(rand_seed)*UINT_MAX));
@@ -704,10 +712,25 @@ BOOST_PYTHON_MODULE(chipboard)
     .def("testGreedy",&ChipboardBoost::testGreedy);
 
 }
-
+*/
 
 
 int main(int argc, char** argv) {
+  srand(argc > 2 ? atoi(argv[2]) : time(0));
+  int num_features=4;
+  double weights[num_features];
+  for(int i=0;i<num_features;i++) {
+    cin>>weights[i];
+  }
+
+  Board B(6,140,.4,0);
+  B.setWeights(weights,num_features, 4);
+  generateDataOneRun(B, 10, 7);
+  return 0;
+
+
+
+
 /**
   bool genBoard = false, playBoard = false, testGreedy = false;
   if (argc < 2) {
