@@ -8,6 +8,21 @@
 #include <string>
 #include<boost/python.hpp>
 #include<limits.h>
+#include <math.h>
+
+float sigmoid(float x)
+{
+     float exp_value;
+     float return_value;
+
+     /*** Exponential calculation ***/
+     exp_value = exp((double) -x);
+
+     /*** Final sigmoid value ***/
+     return_value = 1 / (1 + exp_value);
+
+     return return_value;
+}
 
 using namespace std;
 using namespace boost::python;
@@ -509,7 +524,7 @@ int* getFeatures(Board B, int r, int c, int r2, int c2){
     }
   }
   delete[] features;
-  return returnVal;
+  return sigmoid(returnVal);
 }
 
 
@@ -529,7 +544,7 @@ int modelPlay(Board B) // note: copy!
     {
       int k1 = V[bestk]/N, k2 = V[bestk]%N;
       int i = V[k]/N, j = V[k] % N;
-      if (m(B,k1,k2,i,j)>0) {
+      if (m(B,k1,k2,i,j)-0.5>0) {
         bestk = k; }
 
     }
@@ -554,7 +569,7 @@ Board modelPlaySteps(Board B, int steps ) // note: copy!
     {
       int k1 = V[bestk]/N, k2 = V[bestk]%N;
       int i = V[k]/N, j = V[k] % N;
-      if (m(B,k1,k2,i,j)>0) {
+      if (m(B,k1,k2,i,j)-0.5>0) {
       //  std::cout<<"We called m here\n";
         bestk = k; }
 
