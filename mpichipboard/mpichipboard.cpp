@@ -716,7 +716,7 @@ BOOST_PYTHON_MODULE(chipboard)
 
 
 int main(int argc, char** argv) {
-  srand(argc > 2 ? atoi(argv[2]) : time(0));
+  srand(atoi(argv[1]));
   int num_features=4;
   double weights[num_features];
   for(int i=0;i<num_features;i++) {
