@@ -24,14 +24,15 @@ namespace nnet_interpreter
     void setWeights(char* weight_string);
     void setBias(char* bias_string);
     void print_graph();
-    void setInputs(std::vector<double> features);
+    void setInputs(const std::vector<double> &features);
+    void setInputs(const std::vector<float> &features);
     double calculate();
     void printValues();
     void clean();
   private:
     std::vector<Node*> nodes;
-    double * values;
-    int num_nodes;
+    std::vector<double> values;
+    int num_nodes, num_features;
   };
 
 }
