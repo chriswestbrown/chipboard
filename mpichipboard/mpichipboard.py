@@ -31,8 +31,8 @@ rank,size = (comm.Get_rank(), comm.Get_size())
 if rank == 0:
     l = Learner(0,4)
     n_workers = size - 1
-    N = l.num_boards # number of tests to be run
-
+    N = 400 # number of tests to be run
+    # l.total_boards = 100
 
     #### MANAGER ####
     # random.seed(a=2020) # note: same seed every time! Don't really do this!
@@ -41,8 +41,6 @@ if rank == 0:
     for p in range(1,n_workers+1):
         ready = comm.recv(source=p)
         comm.send(random.randint(0,10000),dest=ready)
-
-
 
     for i in range(math.ceil(l.total_boards/N)):
         x = []
@@ -54,9 +52,8 @@ if rank == 0:
         test_num = 0 # last completed test, tests are numbered 1 through N
         active = 0 # the number of processes currently
         fail = 0
-
         #prompt worker nodes to communicate if not in first round
-        if i!=1:
+        if i != 1:
             for p in range(1,n_workers+1):
                 comm.send("wakeup",p)
 
@@ -70,7 +67,8 @@ if rank == 0:
                         y.append(float(line.split(":")[1]))
                 except:
                     fail += 1
-                    print("Fail num: "+str(fail)+"\ncould not parse this result:\n\t"+res)
+                    test_num -= 1
+                    print("Fail num: "+str(fail)+"\nWorker"+str(ready)+" could not parse this result:\n\t"+res)
             if test_num < N:
                 test_num = test_num + 1
                 comm.send(weight_string,dest=ready) # give worker more work
@@ -80,6 +78,7 @@ if rank == 0:
 
         l.model.fit(numpy.array(x),numpy.array(y),epochs=l.epochs,verbose=0)
         l.testKnowledge(100,0)
+        print(l.model.get_weights())
         l.learning_rate *= l.learning_decay
         l.opt = keras.optimizers.SGD(lr=l.learning_rate,clipvalue=0.5)
         l.model.compile(l.opt,loss='mean_squared_error',metrics=['accuracy'])
@@ -103,7 +102,7 @@ else:
             break;
         elif k == "wakeup":
             comm.send((rank,"init"),0)
-        p = Popen(["./mpichipboard"],stdout=PIPE,stdin=PIPE)
+        p = Popen(["./mpichipboard",str(random.randint(0,10000))],stdout=PIPE,stdin=PIPE)
         res = p.communicate(k.encode())[0]
         p.terminate()
         comm.send((rank,res.decode()),dest=0) # send manager result

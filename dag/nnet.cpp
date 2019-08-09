@@ -9,9 +9,8 @@ namespace nnet_interpreter {
   class Node{
   public:
     virtual ~Node() { }
-    virtual double getValue(double* values){return value;}
+    virtual double getValue(vector<double> &values){return values[node_num];}
     int node_num;
-    int value;
   };
 
   /**
@@ -32,8 +31,8 @@ namespace nnet_interpreter {
   */
   class MiddleNode : public Node{
   public:
-    MiddleNode(string f, int nn, vector<int> i, vector<double> w, double b);
-    virtual double getValue(double* values);
+    MiddleNode(string f, int nn, vector<int> &i, vector<double> &w, double b);
+    virtual double getValue(vector<double> &values);
   private:
     string func;
     vector<int> inputs;
@@ -43,7 +42,7 @@ namespace nnet_interpreter {
 
 
   //Constructor
-  MiddleNode::MiddleNode(string f, int nn, vector<int> i, vector<double> w, double b){
+  MiddleNode::MiddleNode(string f, int nn, vector<int> &i, vector<double> &w, double b){
     this->func = f;
     this->node_num = nn;
     this->inputs = i;
@@ -55,10 +54,10 @@ namespace nnet_interpreter {
      product of weights and values and then adding in bias. Then checks the activation
      function and applies it to the calculated value.
   */
-  double MiddleNode::getValue(double* features){
+  double MiddleNode::getValue(vector<double> &values){
     double ret = 0.0;
     for(int i=0; i<this->inputs.size(); i++){
-      ret += features[this->inputs.at(i)]*this->weights.at(i);
+      ret += values[this->inputs.at(i)]*this->weights.at(i);
     }
     ret += this->bias;
     if(this->func.compare("relu")==0){
@@ -82,8 +81,9 @@ namespace nnet_interpreter {
   Graph::Graph(const char* graph_string){
     stringstream ss(graph_string);
     ss >> num_nodes;
-    this->values = new double[this->num_nodes]{0.0};
-
+    values.resize(num_nodes);
+    num_features = 0;
+    
     for(int i=0; i<num_nodes;i++){
       char temp;
       char func[10];
@@ -111,6 +111,7 @@ namespace nnet_interpreter {
 	weights.push_back(stod(n));
       }
       if(type == 'i'){
+	num_features++;
 	this->nodes.push_back(new InputNode(nn));
       }
       else if(type == 'm'){
@@ -125,9 +126,14 @@ namespace nnet_interpreter {
      Sets the inputs(features) once they are known. Features will change every run,
      but the weights will stay the same for an entire round.
   */
-  void Graph::setInputs(vector<double> features){
+  void Graph::setInputs(const vector<double> &features){
     for(int i=0; i<features.size(); i++){
-      this->nodes.at(i)->value = features.at(i);
+      values[i] = features[i];
+    }
+  }
+  void Graph::setInputs(const vector<float> &features){
+    for(int i=0; i<features.size(); i++){
+      values[i] = features[i];
     }
   }
   /**
@@ -136,16 +142,12 @@ namespace nnet_interpreter {
      values if needed, in the order that they appear in the vector
   */
   double Graph::calculate(){
-    int i=0;
-    while(i<this->nodes.size()){
-      this->values[i] = this->nodes.at(i)->getValue(this->values);
-      i++;
-    }
-    return this->values[i-1];
+    for(int i = num_features; i < nodes.size(); ++i)
+      values[i] = nodes[i]->getValue(values);    
+    return this->values[nodes.size() - 1];
   }
 
   Graph::~Graph(){
-    delete [] values;
     for(int i = 0; i < nodes.size(); ++i)
       delete nodes[i];
   }
