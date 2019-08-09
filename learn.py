@@ -28,7 +28,7 @@ class Learner:
                         for l in range(len(nb)):
                             sets.append((epochs[i],lr[j],ld[k],nb[l]))
             self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
-            self.model.add(Dense(1,input_dim=self.num_features,activation='linear',use_bias=False,kernel_initializer='ones'))
+            self.model.add(Dense(1,input_dim=self.num_features,activation='tanh',use_bias=False,kernel_initializer='ones'))
             self.total_boards = 10000
         elif self.num_features == 8:
             epochs = [20]
@@ -43,13 +43,13 @@ class Learner:
                             sets.append((epochs[i],lr[j],ld[k],nb[l]))
             self.epochs,self.learning_rate,self.learning_decay,self.num_boards = sets[index]
             self.model.add(Dense(self.num_nodes,input_dim=self.num_features,activation='relu',kernel_initializer='ones',bias_initializer='ones'))
-            self.model.add(Dense(1,activation='linear',use_bias=False,kernel_initializer='ones'))
+            self.model.add(Dense(1,activation='tanh',use_bias=False,kernel_initializer='ones'))
             self.total_boards = 20000
         else:
             exit()
 
         self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
-        self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
+        self.model.compile(self.opt,loss='binary_crossentropy',metrics=['accuracy'])
         self.player = LFPlay()
 
     def playFunc(self,V):
@@ -112,7 +112,7 @@ class Learner:
         t = Tester()
         t.testStrat(n,self.playFunc,kind)
 
-    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=100):
+    def learnThingsCPP(self,kind=0,rand_init=10,rand_range=7,test_inc=500,file="stdout",weightFile="stdout",testBoards=10000):
         """Generates data and then calls model.fit to learn from the collected data. Decreases
         the learning rate by a provided value and tests the current model against greedy after
         each round of genertion/fitting.
@@ -170,7 +170,7 @@ class Learner:
                 boards_until_test += test_inc
             self.learning_rate *= self.learning_decay
             self.opt = keras.optimizers.SGD(lr=self.learning_rate,clipvalue=0.5)
-            self.model.compile(self.opt,loss='mean_squared_error',metrics=['accuracy'])
+            self.model.compile(self.opt,loss='binary_crossentropy',metrics=['accuracy'])
         f.write("\n")
         f.close()
         wf.close()
