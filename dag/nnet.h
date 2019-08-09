@@ -1,3 +1,6 @@
+#ifndef _NNET_INTERPRETER_
+#define _NNET_INTERPRETER_
+
 #include <string>
 #include <vector>
 #include <stdio.h>
@@ -33,3 +36,4 @@ namespace nnet_interpreter
 
 }
 
+#endif
