@@ -9,6 +9,8 @@ public class TButton extends JPanel implements MouseListener {
   private String lab;
   private ArrayList<ActionListener> listeners = new ArrayList<ActionListener>();
   public TButton(String lab) {
+    super();
+    setBackground(new Color(0,0,0,0));
     this.lab  = lab;
     setPreferredSize(new Dimension(24,24));
     addMouseListener(this);

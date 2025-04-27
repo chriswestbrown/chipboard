@@ -5,17 +5,20 @@ import java.awt.event.*;
 
 public class ChipBoard extends JFrame implements TileListener , ChipBoardMech.UpdateListener {
 
+  Color ctrlPanelColor = new Color(234,248,247);
+  Color ctrlPanelColorB = Color.WHITE;
+  
   ChipBoardMech gameMech;
   private Random rand2 = new Random();
   JPanel p;
   TButton button;
-  JLabel l1;
+  CBLabel l1;
   JTextField tf1;
-  JLabel l2;
+  CBLabel l2;
   JTextField tf2;
-  JLabel l3;
+  CBLabel l3;
   JTextField tf3;
-  JLabel l4;
+  CBLabel l4;
   JTextField tf4;
 
   //-- TileListener stuff
@@ -43,20 +46,20 @@ public class ChipBoard extends JFrame implements TileListener , ChipBoardMech.Up
   public ChipBoard(int seed) {
     super();
     setMech(seed);    
-    setTitle("Chipboard");    
+    setTitle("Chipboard");
     p = new JPanel(new GridLayout(gameMech.getNr(),gameMech.getNc()));
     for(int i = 0; i < gameMech.getNr(); i++) {
       for(int j = 0; j < gameMech.getNc(); j++)
 	p.add(new Tile(i,j,this));
     }
-    l1 = new JLabel("#chips:");
-    tf1 = new JTextField("0",3); tf1.setFocusable(false);
-    l2 = new JLabel("#empty:");
-    tf2 = new JTextField("0",3); tf2.setFocusable(false);
-    l3 = new JLabel("score:");
-    tf3 = new JTextField("0",3); tf3.setFocusable(false);
+    l1 = new CBLabel("#chips:");
+    tf1 = new JTextField("0",3); tf1.setFocusable(false); tf1.setBackground(ctrlPanelColorB);
+    l2 = new CBLabel("#empty:");
+    tf2 = new JTextField("0",3); tf2.setFocusable(false); tf2.setBackground(ctrlPanelColorB);
+    l3 = new CBLabel("score:");
+    tf3 = new JTextField("0",3); tf3.setFocusable(false); tf3.setBackground(ctrlPanelColorB);
 
-    l4 = new JLabel("seed:");
+    l4 = new CBLabel("seed:");
     tf4 = new JTextField("" + gameMech.getSeed(),4); tf3.setFocusable(false);
     tf4.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
@@ -71,14 +74,15 @@ public class ChipBoard extends JFrame implements TileListener , ChipBoardMech.Up
     button = new TButton("⚄");
 
     JPanel ctrlPanel = new JPanel(new FlowLayout());
+    ctrlPanel.setBackground(ctrlPanelColor);
     ctrlPanel.add(l3);
     ctrlPanel.add(tf3);
     tf3.setEditable(false);
-    ctrlPanel.add(new JLabel("="));
+    ctrlPanel.add(new CBLabel("="));
     ctrlPanel.add(l2);
     ctrlPanel.add(tf2);
     tf2.setEditable(false);
-    ctrlPanel.add(new JLabel("-"));
+    ctrlPanel.add(new CBLabel("-"));
     ctrlPanel.add(l1);
     ctrlPanel.add(tf1);
     tf1.setEditable(false);

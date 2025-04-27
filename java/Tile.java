@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Tile extends JPanel implements MouseListener
 {
+  public static Color baseColor = Color.WHITE;
   private boolean activated = false, matched = false;
   private Pos pos;
   private int colorId = -1;
@@ -56,8 +57,17 @@ public class Tile extends JPanel implements MouseListener
   protected void paintComponent(Graphics g) {    
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D)g;
+    
+    // This voodoo makes the output prettier
+    g2.setRenderingHint(
+			RenderingHints.KEY_ANTIALIASING, 
+			RenderingHints.VALUE_ANTIALIAS_ON);
+    g2.setRenderingHint(
+			RenderingHints.KEY_RENDERING, 
+			RenderingHints.VALUE_RENDER_QUALITY);
+    
     Rectangle2D.Double r = new Rectangle2D.Double(0,0,100,100);
-    g2.setColor(Color.WHITE);
+    g2.setColor(baseColor);
     g2.fill(r);
     int n = board.numChips(pos);
     boolean red = board.redTop(pos);    
