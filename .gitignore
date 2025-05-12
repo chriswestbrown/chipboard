@@ -7,6 +7,9 @@
 *.o
 *.obj
 
+# java class files
+*.class
+
 # Precompiled Headers
 *.gch
 *.pch
