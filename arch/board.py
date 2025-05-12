@@ -153,6 +153,9 @@ class LFPlay:
     the feature vector - the stack height and color (-1=red, +1=black).
     The two moves to be compared are represented as a 36-component
     vector that is first move followed by second.
+    NOTE: if the policy function returns a negative number, we prefer
+          the first move.  If it returns a positive number we prefer
+          the second move.
     """
 
     def getPosFeatureVector(self,B,r,c):
@@ -167,7 +170,7 @@ class LFPlay:
     def getMovesWithValues(self,B,f):
         """Returns array of ((r,c),val) for each valid move, where val is playout with f."""
         M = B.getMoves()
-        return list(map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)), M))
+        return list(map(lambda m: (m,self.playout(B.clone().choose(m[0],m[1]),f)[0]), M))
 
     def makeMove(self,B,f):
         """Makes one move following choice function f as a policy."""
@@ -183,11 +186,14 @@ class LFPlay:
         return B.score()
 
     def playout(self,B,f):
-        """Playout with choice function f as a policy, returning resulting score."""
+        """Playout with choice function f as a policy, returning resulting score.
+           and the number of moves taken"""
         s = B.score()
+        count = 0
         while s < 0:
             s = self.makeMove(B,f)
-        return s
+            count += 1
+        return s,count
 
     def play(self,B,f,N):
         """Plays N moves using f as policy."""
@@ -225,6 +231,14 @@ class LFPlay:
         s2 = self.countRemoved(V,9) - self.countRed(V,9)
         return s2 - s1
 
+    def learnedImprovedGreedy(self,V):
+        """Improved greedy choice based on perceptron learning.  This is about a 2-3% improvement in score ... whoopee!"""
+        return 1.31251*self.countRed(V,0) - self.countRemoved(V,0) - (1.31251*self.countRed(V,9) - self.countRemoved(V,9))
+    
+    def foo(self,V):
+        """This is the literal learned function from above."""
+        return (0.3491985)*self.countRed(V,0) + (-0.2655282)*self.countRemoved(V,0) + (-0.34761885)*self.countRed(V,9) + (0.26533472)*self.countRemoved(V,9) + (-0.00410312)
+    
     def adaptFeatures(self,V):
         featArr = []; #[num red chips by move 1, num total chips by move 1, num red chips by move 2, num total chips by move 2]
         featArr = [self.countRed(V,0), self.countRemoved(V,0), self.countRed(V,9), self.countRemoved(V,9)]
