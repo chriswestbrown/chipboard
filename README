@@ -1,0 +1,59 @@
+** THE PROBLEM **
+
+ChipBoard Problem v2           Chris Brown, May 2025
+
+ChipBoard is a toy game that allows us to explore
+learning in a challenging situation --- one in which
+traditional reinforcement learning isn't a very good
+fit.  The game works like this:  We have a board like
+chess (of whatever dimension).  It has chips stacked
+in the squares.  Some are all black on top, some have
+a red dot on the top.  You can move by chooseing a
+red-dot chip on the top of a stack and picking it and
+the chips on the top of the adjacent (non-diagonal!)
+stacks.  The goal is to maximize the "score" when you
+get to the point that there are no moves left.
+
+In this version (Version 2) of the problem:
+
+a) score = #empty squares - #chips on board
+
+b) chip stacks strictly alternate between red and
+   black starting from whichever color is bottomost
+   on that stack.
+
+** FILES AND DIRECTORIES **
+
+A. The file README.THEORY has description of
+   chipboard as a theoretical optimization and
+   decision problem.
+
+   Q: Is CHIPBOARD(n,k,B,t) NP-COMPLETE?
+
+B. The directory java has source code for a nice
+   (I think!) GUI version of the game.  This is
+   packaged as a linux executable (./chipboard)
+   or as a jar file (chipboard.jar).
+
+
+
+
+
+
+
+** HISTORICAL ...
+
+ChipBoard                     Chris Brown, July 2019
+
+ChipBoard is a toy game that allows us to explore
+learning in a challenging situation --- one in which
+traditional reinforcement learning isn't a very good
+fit.  The game works like this:  We have a board like
+chess (of whatever dimension).  It has chips stacked
+in the squares.  Some are all black on top, some have
+a red dot on the top.  You can move by chooseing a
+red-dot chip on the top of a stack and picking it and
+the chips on the top of the adjacent (non-diagonal!)
+stacks.  The goal is to minimize the number of chips
+left on the board when you get to the point that there
+are no moves left.

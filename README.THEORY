@@ -1,7 +1,7 @@
 ***********************
 ** OPTIMIZATION PROBLEM
 ***********************
-ChipBoard(n,k,B)
+ChipBoard(n,k,B)    v2.0
 
 Input: a "board" represented by ...
    n: a positive integer
@@ -31,7 +31,7 @@ Problem: Find a sequence of moves that produces
 ***********************
 ** OPTIMIZATION PROBLEM
 ***********************
-CHIPBOARD(n,k,B,t)
+CHIPBOARD(n,k,B,t)    v2.0
 
 where (n,k,B) are as above, and t is a non-negative
 integer.  This instance is TRUE if there is a
