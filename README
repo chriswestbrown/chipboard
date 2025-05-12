@@ -1,4 +1,4 @@
-** THE PROBLEM **
+** THE PROBLEM ************************************
 
 ChipBoard Problem v2           Chris Brown, May 2025
 
@@ -22,7 +22,17 @@ b) chip stacks strictly alternate between red and
    black starting from whichever color is bottomost
    on that stack.
 
-** FILES AND DIRECTORIES **
+
+** QUICK PLAY! ***********************************
+
+A. on linux/mac: java/chipboard 
+
+B. on windows:   java -jar java/chipboard.jar
+
+NOTE: you need to have the JVM installed!
+
+
+** FILES AND DIRECTORIES *************************
 
 A. The file README.THEORY has description of
    chipboard as a theoretical optimization and
@@ -41,7 +51,7 @@ B. The directory java has source code for a nice
 
 
 
-** HISTORICAL ...
+** HISTORICAL ************************************
 
 ChipBoard                     Chris Brown, July 2019
 
