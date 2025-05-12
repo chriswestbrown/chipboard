@@ -5,8 +5,9 @@ import java.awt.event.*;
 
 public class ChipBoardMech {
   public Random rand; // based off of game seed
-  final int Nr = 7, Nc = 7, k = 150;
-  private int count = k, numMovesMade = 0, redShowing = 0, emptyStacks = Nr*Nc;
+  final int Nr = 7, Nc = 7;
+  private int k; // default 150
+  private int count, numMovesMade = 0, redShowing = 0, emptyStacks = Nr*Nc;
   CStack[][] B = new CStack[Nr][Nc];
   Integer currentSeed = null;
   ArrayList<UpdateListener> listeners = new ArrayList<UpdateListener>();
@@ -51,9 +52,17 @@ public class ChipBoardMech {
 
   //-- Constructor
   public ChipBoardMech(int seed) {
+    init(seed,150);
+  }
+  public ChipBoardMech(int seed, int initNumChips) {
+    init(seed,initNumChips);
+  }
+  
+  private void init(int seed, int initNumChips) {
     rand = new Random(seed);	
     currentSeed = seed;
-
+    k = initNumChips;
+    
     // Set up board
     for(int i = 0; i < Nr; i++)
       for(int j = 0; j < Nc; j++)
@@ -67,6 +76,7 @@ public class ChipBoardMech {
 	B[r][c].push(x);
       else
 	B[r][c].push(redTop(p) ? 0 : 1);
+      count++;
     }    
   }
   
@@ -84,6 +94,7 @@ public class ChipBoardMech {
   public boolean gameOver() { return redShowing == 0; }
   public int numEmptyStacks() { return emptyStacks; }
   public int numChips() { return count; }
+  public int getScore() { return emptyStacks - count; }
   public Integer getSeed() { return currentSeed; }
   public int getNc() { return Nc; }
   public int getNr() { return Nc; }        
@@ -106,7 +117,7 @@ public class ChipBoardMech {
       numMovesMade++;
       //System.out.println("AFTER: red showing = " + redShowing + " count = " + count);
       boolean gameOver = redShowing == 0;
-      if (gameOver) {
+      if (gameOver && false) {
 	System.out.println("Game over: " +
 			   "score " + (numEmptyStacks() - count) + ", "	+		   
 			   count + " chips left on Board, " +
@@ -132,16 +143,17 @@ public class ChipBoardMech {
   
   //-- MAIN
   public static void main(String[] args) {
-    boolean help = false;
     Integer seed = null;
-    int playType = 0; // 0 <- human, 1 <- random
+    Integer numTimes = null;
     for(int i = 0; i < args.length; i++) {
       try {
-	seed = Integer.parseInt(args[i]);
+	int x = Integer.parseInt(args[i]);
+	if (seed == null) { seed = x; }
+	else if (numTimes == null) { numTimes = x; }
+	else { System.out.println("Too many arguments!"); System.exit(1); }
       }catch(Exception e) {
-	help = true;
 	System.out.println("Error!  Can't interpret '" + args[i] +
-			   "' as integer seed value.");
+			   "' as integer value.");
 	break;
       }
     }
@@ -149,12 +161,18 @@ public class ChipBoardMech {
       System.out.println("Requires seed argument!");
       System.exit(0);
     }
-    
-    // Seed 100, best so far: Game over: 10 chips left on Board, 43 moves made 43 empty cells!
-    ChipBoardMech b = new ChipBoardMech(seed);
+    if (numTimes == null) {
+      numTimes = 1;
+    }
+
     Random rand2 = new Random();
-    while(!b.gameOver()) {
-      b.makeMove(b.randomMove(rand2));
+    for(int i = 0; i < numTimes; i++) {
+      ChipBoardMech b = new ChipBoardMech(seed);
+      while(!b.gameOver()) {
+	b.makeMove(b.randomMove(rand2));
+      }
+      System.out.printf("score = %d, #empty = %d, #chips = %d\n",b.getScore(),b.numEmptyStacks(),b.numChips());
+      int s = b.getScore();
     }
   }
 }
