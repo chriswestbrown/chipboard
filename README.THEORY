@@ -1,0 +1,39 @@
+***********************
+** OPTIMIZATION PROBLEM
+***********************
+ChipBoard(n,k,B)
+
+Input: a "board" represented by ...
+   n: a positive integer
+   k: a positive integer
+   B: a list of n^2 integers such that
+      sum for i=0..n^2-1 of |B[i]| = k
+
+Consider n x n grid (the "board") where,
+at each row r and column c grid square, there
+is a stack of B[r* + c] alternating red/black
+chips, where the top chip is red if B[r* + c] < 0
+and black otherwise.
+
+As long as at least one square has a stack with a
+red chip on top, a "player" can make a "move".
+A move consists of choosing grid square r,c for
+which the top chip is red, and removing the top
+chip from that stack and the stacks on each of the
+adjacent (this means non-diagnoal) grid squares.
+
+The player's "score" is the number of empty grid
+cells - the number of chips remaining on the board.
+
+Problem: Find a sequence of moves that produces
+   the minimum score.
+
+***********************
+** OPTIMIZATION PROBLEM
+***********************
+CHIPBOARD(n,k,B,t)
+
+where (n,k,B) are as above, and t is a non-negative
+integer.  This instance is TRUE if there is a
+solution to ChipBoard(n,k,B) with score greater than
+or equal to t, and FALSE otherwise.
